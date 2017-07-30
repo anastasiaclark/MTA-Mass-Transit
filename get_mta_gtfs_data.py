@@ -4,13 +4,15 @@ Created on Tue May 23 09:09:26 2017
 
 @author: AClark
 """
+
+##for Python 3 use import urllib.request
 import pandas as pd
 import urllib
 from bs4 import BeautifulSoup
 import requests,os
 import zipfile
 
-mon_year='May2017'
+mon_year='July2017'
 
 #server_path=r'\\DFSN1V-B\Shares\LibShare\Shared\Divisions\Graduate\GEODATA\MASS_Transit'
 server_path='/Users/anastasiaclark/Desktop/MyStaff/Git_Work/MTA-Mass-Transit'
@@ -41,4 +43,8 @@ gtfs_d={l:all_links[l].strip('-').strip() for l in gtfs}
 
 for k,v in gtfs_d.items():
     name='{}.zip'.format(folders_d[v])
-    urllib.request.urlretrieve(os.path.join(base_path,k), os.path.join(server_path,mon_year,folders_d[v],name))
+    urllib.urlretrieve(os.path.join(base_path,k), os.path.join(server_path,mon_year,folders_d[v],name))
+    zip_ref = zipfile.ZipFile(os.path.join(server_path,mon_year,folders_d[v],name), 'r')
+    zip_ref.extractall(os.path.join(server_path,mon_year,folders_d[v]))
+    zip_ref.close()
+    

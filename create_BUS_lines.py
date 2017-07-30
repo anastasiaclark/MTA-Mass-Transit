@@ -13,7 +13,7 @@ import os
 from shapely.geometry import Point, LineString
 
 path=r'\\bctc-nas\LibShare\Shared\Divisions\Graduate\GEODATA\MASS_Transit'# this path is assumed to stay the same
-folder_name=input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored')
+folder_name=input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
 
 local_service='bus_routes_nyc_{}'.format(folder_name)# names for shapefiles
 express_service='express_bus_routes_nyc_{}'.format(folder_name)
@@ -144,7 +144,7 @@ nyc_bus=gpd.GeoDataFrame(pd.concat([local_bk,local_bx,local_mn,local_gn,local_si
 nyc_bus=gpd.GeoDataFrame(nyc_bus,columns=['route_id','dir_id','route_dir','geometry','route_short','route_long','color'])
 nyc_bus.crs={'init' :'epsg:2263'}
 
-nyc_bus.to_file(os.path.join(path,folder_name,'shapes','{}.shp'.format(local_service)))# save gdfs to shapefiles
+nyc_bus.to_file(os.path.join(path,folder_name,'shapes','{}.shp'.format(local_service)))# save gtfs to shapefiles
 express_nyc.to_file(os.path.join(path,folder_name,'shapes','{}.shp'.format(express_service)))
 
 print ('All done')       
