@@ -13,11 +13,12 @@ import pandas as pd
 import os
 from shapely.geometry import Point, LineString
 
-path_name=r'\\bctc-nas\LibShare\Shared\Divisions\Graduate\GEODATA\MASS_Transit' # this path is assumed to stay the same
+path_name='/Users/anastasiaclark/Desktop/MyStaff/Git_Work/MTA-Mass-Transit' # this path is assumed to stay the same
 rails=['LIRR','metro_north','nyc_subway']
 
 ## the month and the year will be appended to the names of the resulted shapefiles
-folder_name=input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
+## for Python 3 change raw_input() to input()
+folder_name=raw_input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
 
 ## In the feeds, MTA subway trips.txt is missing route_id for train 1; this
 ## results in the loss of the train 1 after the route_id field is obtained

@@ -17,7 +17,7 @@ rails=['LIRR','metro_north','nyc_subway'] # these are the services, for which
                                           # the shapes are created in this script
                                           
 path_name='/Users/anastasiaclark/Desktop/MyStaff/Git_Work/MTA-Mass-Transit' #  this path assumed to stay the same
-folder_name=input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
+folder_name=raw_input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
 counties=gpd.GeoDataFrame.from_file(os.path.join(path_name,folder_name,'county_boundaries.shp'))
 counties=counties.to_crs(epsg=2263)
 trains_at_stops=pd.read_csv('http://web.mta.info/developers/data/nyct/subway/Stations.csv',usecols =['GTFS Stop ID','Daytime Routes','Structure'])
