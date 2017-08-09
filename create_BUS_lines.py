@@ -12,8 +12,8 @@ import pandas as pd
 import os
 from shapely.geometry import Point, LineString
 
-path=r'\\bctc-nas\LibShare\Shared\Divisions\Graduate\GEODATA\MASS_Transit'# this path is assumed to stay the same
-folder_name=input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
+path='/Users/anastasiaclark/Desktop/MyStaff/Git_Work/MTA-Mass-Transit'# this path is assumed to stay the same
+folder_name=raw_input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
 
 local_service='bus_routes_nyc_{}'.format(folder_name)# names for shapefiles
 express_service='express_bus_routes_nyc_{}'.format(folder_name)

@@ -12,18 +12,18 @@ import pandas as pd
 import os
 from shapely.geometry import Point
 
-path_name=r'\\bctc-nas\LibShare\Shared\Divisions\Graduate\GEODATA\MASS_Transit'
-folder_name=input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored')
+path_name='/Users/anastasiaclark/Desktop/MyStaff/Git_Work/MTA-Mass-Transit'
+folder_name=raw_input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
 local_service='bus_stops_nyc_{}.shp'.format(folder_name)
 express_service='express_bus_stops_nyc_{}.shp'.format(folder_name)
 
 boroughs=[ boro for boro in os.listdir(os.path.join(path_name,folder_name)) if boro.endswith('bus')]
-counties=gpd.GeoDataFrame.from_file(os.path.join(path_name,folder_name,'county_boundaries.shp'))
+counties=gpd.read_file(os.path.join(path_name,'counties_bndry.geojson'),driver='GeoJSON')
 counties=counties.to_crs(epsg=2263)
 counties.crs={'init' :'epsg:2263'}
 
 ###--------------this part reads and processes bus company files---------------------###
-stops_raw=pd.read_csv(os.path.join(path_name,folder_name,'bus_company\stops.txt'))
+stops_raw=pd.read_csv(os.path.join(path_name,folder_name,'bus_company','stops.txt'))
 stops=pd.DataFrame(stops_raw,columns=['stop_id','stop_name','stop_lat','stop_lon'])
 print (len(stops))
 stop_times=pd.read_csv(os.path.join(path_name,folder_name,'bus_company','stop_times.txt'))

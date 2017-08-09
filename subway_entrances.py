@@ -4,6 +4,9 @@ Purpose: This script creates shapefiles from txt/csv file containing information
          NYC subway entrances. The file containing the raw data is assumed to be named
          'StationEntrances.txt' (or .csv)
          
+Copy and paste into an txt/csv document the entrances information from the MTA's website.
+http://web.mta.info/developers/data/nyct/subway/Stations.csv          
+         
 Created on : Oct, 2016                                            
 -------------------------------------------------------------------------------------
 '''
@@ -12,13 +15,14 @@ import pandas as pd
 import os
 from shapely.geometry import Point
 
-path_name=r'\\bctc-nas\LibShare\Shared\Divisions\Graduate\GEODATA\MASS_Transit'
-folder_name=input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored')
+path_name='/Users/anastasiaclark/Desktop/MyStaff/Git_Work/MTA-Mass-Transit'
+folder_name=raw_input('Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
 
 shape_name='subway_entrances_'+folder_name+'.shp'
-
-entrances=pd.read_csv(os.path.join(path_name,folder_name,'StationEntrances.txt'))
-counties=gpd.GeoDataFrame.from_file(os.path.join(path_name,folder_name,'county_boundaries.shp'))
+entrances=pd.read_csv('http://web.mta.info/developers/data/nyct/subway/StationEntrances.csv')
+## uncomment this line
+#entrances=pd.read_csv(os.path.join(path_name,folder_name,'StationEntrances.txt'))
+counties=gpd.read_file(os.path.join(path_name,'counties_bndry.geojson'),driver='GeoJSON')
 counties=counties.to_crs(epsg=2263) ## reproject counties to NY State Plane
 
 entrances.columns=['division', 'line','stn_name', 'stn_Lat',    ## give the columns short names
