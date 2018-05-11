@@ -10,10 +10,10 @@ from bs4 import BeautifulSoup
 import requests, os
 import zipfile
 
-mon_year = 'Sep2017'
+mon_year = 'May2018'
 
 # server_path=r'\\DFSN1V-B\Shares\LibShare\Shared\Divisions\Graduate\GEODATA\MASS_Transit'
-server_path = '/Users/anastasiaclark/Desktop/MyStaff/Git_Work/MTA-Mass-Transit'
+server_path = '/Users/anastasiaclark/MyStaff/Git_Work/MTA-Mass-Transit'
 base_path = 'http://web.mta.info/developers'
 
 folders_to_create = ['nyc_subway', 'bk_bus', 'qn_bus', 'bus_company',

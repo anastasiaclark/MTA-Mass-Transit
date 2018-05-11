@@ -16,13 +16,15 @@ import os
 rails = ['LIRR', 'metro_north', 'nyc_subway']  # these are the services, for which
 # the shapes are created in this script
 
-path_name = '/Users/anastasiaclark/Desktop/MyStaff/Git_Work/MTA-Mass-Transit'  # this path assumed to stay the same
+path_name = '/Users/anastasiaclark/MyStaff/Git_Work/MTA-Mass-Transit'  # this path assumed to stay the same
 folder_name = input(
     'Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
 counties = gpd.read_file(os.path.join(path_name, 'counties_bndry.geojson'), driver='GeoJSON')
 counties = counties.to_crs(epsg=2263)
+
 trains_at_stops = pd.read_csv('http://web.mta.info/developers/data/nyct/subway/Stations.csv',
                               usecols=['GTFS Stop ID', 'Daytime Routes', 'Structure'])
+
 trains_at_stops.columns = ['stop_id', 'trains', 'structure']  # rename columns
 
 for rail in rails:
@@ -47,24 +49,26 @@ for rail in rails:
         stops.loc[stops['stop_id'] == 'H01', 'stop_lat'] = 40.672086
         stops.loc[stops['stop_id'] == 'H01', 'stop_lon'] = -73.835914
         stops.loc[stops['stop_id'] == '138', 'stop_name'] = stops.stop_name + ' (Closed)'
-        df = stops[stops.duplicated(subset=['stop_lat', 'stop_lon'])][
-            ['stop_lat', 'stop_lon', 'stop_id']]  # get the duplciate stations only; columns specified
-        df.columns = ['stop_lat', 'stop_lon',
-                      'stop_id2']  # rename the last column; it will be used as stop_id2 to reference the removed duplicates
+        
+        df = stops.loc[stops.duplicated(subset=['stop_lat', 'stop_lon'])][['stop_lat', 'stop_lon', 'stop_id']] # get the duplciate stations only; columns specified
+        
+        df.rename(columns={'stop_id': 'stop_id2'}, inplace=True)  # rename the last column; it will be used as stop_id2 to reference the removed duplicates
+        
+        stops = stops.merge(trains_at_stops, on='stop_id', how='outer')      
         stops = stops.drop_duplicates(['stop_lat', 'stop_lon'],
                                       keep='first')  # removes stations where both lat and lon are the same
+        
         stops = pd.merge(stops, df, on=['stop_lat', 'stop_lon'], how='outer', suffixes=('old', 'new'))
-        stops = stops.merge(trains_at_stops, on='stop_id', how='outer')
+
 
         # check if there are new stops that didn't exist before
         new_subway_stops = stops[stops.trains.isnull()]
         if len(new_subway_stops) > 0:
             print('----------------------------------------------------------', '\n',
-                  """Warning: new subway stops have been created since
-                  the last release consider either adding them
-                  to the txt file 'trainsAtStops.txt'
-                  or edit the attribute table of the
-                  resulted nyc_subway_stops shapefile""", '\n',
+                  """Warning: either new subway stops have been created since
+                  the last release or the information for some stops is missing 
+                  in http://web.mta.info/developers/data/nyct/subway/Stations.csv file.
+                  Consider updating the missing information manually in the shapefiles""", '\n',
                   '-----------------------------------------------------------')
 
     elif rail == 'metro_north':

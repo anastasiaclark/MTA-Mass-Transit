@@ -13,7 +13,7 @@ import pandas as pd
 import os
 from shapely.geometry import Point, LineString
 
-path_name = '/Users/anastasiaclark/Desktop/MyStaff/Git_Work/MTA-Mass-Transit'  # this path is assumed to stay the same
+path_name = '/Users/anastasiaclark/MyStaff/Git_Work/MTA-Mass-Transit'  # this path is assumed to stay the same
 rails = ['LIRR', 'metro_north', 'nyc_subway']
 
 ## the month and the year will be appended to the names of the resulted shapefiles
