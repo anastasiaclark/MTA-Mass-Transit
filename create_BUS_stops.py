@@ -1,8 +1,9 @@
 '''
 ------------------------------------------------------------------------------------------
 Purpose: This script processes GTFS feeds to create shapefiles representing bus stops.
-         The script assumes the naming conventions of the folders, containing the feeds
-         in txt format to remain identical to those in the past.                                             
+
+         The data has to be downloaded prior to running this script. 
+         If not done so, run the get_mta_gtfs_data.py to download the data.                                           
                                                                           
 Created on : Oct, 2016                                            
 -----------------------------------------------------------------------------------------

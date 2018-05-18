@@ -1,9 +1,9 @@
 '''
 -------------------------------------------------------------------------------------------
 Purpose: This script processes GTFS feeds to create shapefiles representing bus routes.
-         The script assumes the naming conventions of the folders, containing the feeds
-         in txt format to remain identical to those in the past.                                            
-                                                                          
+         The data has to be downloaded prior to running this script. If not done so, 
+         run the get_mta_gtfs_data.py to download the data.
+                                                                         
 Created on : Oct, 2016                                            
 ------------------------------------------------------------------------------------------
 '''
@@ -12,7 +12,7 @@ import pandas as pd
 import os
 from shapely.geometry import Point, LineString
 
-path = '/Users/anastasiaclark/MyStaff/Git_Work/MTA-Mass-Transit'  # this path is assumed to stay the same
+path = '/Users/anastasiaclark/MyStaff/Git_Work/MTA-Mass-Transit' 
 folder_name = input(
     'Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
 

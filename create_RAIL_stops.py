@@ -1,16 +1,17 @@
 '''
 --------------------------------------------------------------------------------------
 Purpose: This script creates shapefiles representing stops the MTA    
-         rail services: nyc subway, Metro-North and LIRR. The script       
-         assumes the naming conventions of the folders, containing the feeds
-         in txt format to remain identical to those in the past.                                             
+         rail services: nyc subway, Metro-North and LIRR. 
+         
+         The data has to be downloaded prior to running this script. 
+         If not done so, run the get_mta_gtfs_data.py to download the data.                                            
                                                                           
 Created on : Oct, 2016                                            
 -------------------------------------------------------------------------------------
 '''
 import geopandas as gpd
 import pandas as pd
-from shapely.geometry import Point, LineString
+from shapely.geometry import Point
 import os
 
 rails = ['LIRR', 'metro_north', 'nyc_subway']  # these are the services, for which

@@ -1,9 +1,10 @@
 '''
 --------------------------------------------------------------------------------------
 Purpose: This script creates shapefiles representing routes fot the MTA    
-         rail services: nyc subway, Metro-North and LIRR. The script       
-         assumes the naming conventions of the folders, containing the feeds
-         in txt format to remain identical to those in the past.                                             
+         rail services: nyc subway, Metro-North and LIRR. 
+
+         The data has to be downloaded prior to running this script. 
+         If not done so, run the get_mta_gtfs_data.py to download the data.                                            
                                                                           
 Created on : Oct, 2016                                            
 -------------------------------------------------------------------------------------
