@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import requests, os
 import zipfile
 
-mon_year = 'May2018'
+mon_year = input('Please provide the folder name to create, Ex: May2018\n')
 
 # server_path=r'\\DFSN1V-B\Shares\LibShare\Shared\Divisions\Graduate\GEODATA\MASS_Transit'
 server_path = '/Users/anastasiaclark/MyStaff/Git_Work/MTA-Mass-Transit'
@@ -33,12 +33,21 @@ url = 'http://web.mta.info/developers/developer-data-terms.html#data'
 r = requests.get(url)
 data = r.text
 soup = BeautifulSoup(data, 'lxml')
-all_links = {l.get('href'): l.text for l in soup.find_all('a')}
+
+all_links={l.find('a').get('href'):[l.text, l.find('a').text] for l in lis if l.find('a') and l.text}
+
+#all_links = {l.get('href'): l.text for l in soup.find_all('a')}
 
 gtfs = [k for k in all_links.keys() if k is not None and '.zip' in k and k.startswith('data')
         and 'Shapefiles' not in k and 'Historical' not in k]
 
-gtfs_d = {l: all_links[l].strip('-').strip() for l in gtfs}
+gtfs_d = {l: all_links[l][1].strip('-').strip() for l in gtfs}
+
+# get the info when the GTF feed was updated and remove extra characters from it 
+updates={l: all_links[l][0] for l in gtfs}
+dates=[v for v in updates.values()]
+dates_fromatted=[' '.join(d.split()) for d in dates]
+
 
 for k, v in gtfs_d.items():
     name = '{}.zip'.format(folders_match[v])
@@ -46,3 +55,8 @@ for k, v in gtfs_d.items():
     zip_ref = zipfile.ZipFile(os.path.join(server_path, mon_year, folders_match[v], name), 'r')
     zip_ref.extractall(os.path.join(server_path, mon_year, folders_match[v]))
     zip_ref.close()
+
+# write out the dates of the latest update for each data downloaded
+with open (os.path.join(server_path, mon_year, 'updates.txt'),'w') as t:
+    for line in dates_fromatted:
+        t.write(line+'\n')
