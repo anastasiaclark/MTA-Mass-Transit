@@ -69,7 +69,7 @@ for rail in rails:
                   """Warning: either new subway stops have been created since
                   the last release or the information for some stops is missing 
                   in http://web.mta.info/developers/data/nyct/subway/Stations.csv file.
-                  Consider updating the missing information manually in the shapefiles""", '\n',
+                  Consider updating the missing train information manually in the shapefiles""", '\n',
                   '-----------------------------------------------------------')
 
     elif rail == 'metro_north':
