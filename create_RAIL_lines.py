@@ -14,26 +14,30 @@ import pandas as pd
 import os
 from shapely.geometry import Point, LineString
 
-path_name = '/Users/anastasiaclark/MyStaff/Git_Work/MTA-Mass-Transit'  # this path is assumed to stay the same
+path_name = os.getcwd()
 rails = ['LIRR', 'metro_north', 'nyc_subway']
 
-## the month and the year will be appended to the names of the resulted shapefiles
-## for Python 3 change raw_input() to input()
+# the month and the year will be appended to the names of the resulted shapefiles
 folder_name = input(
     'Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
 
 
-## In the feeds, MTA subway trips.txt is missing route_id for train 1; this
-## results in the loss of the train 1 after the route_id field is obtained
-## via join with trips table. This function is a workaround to get route_id
-## without the table join.
-def get_route_id(shape_id):  # function to get route id out of shape id (Ex: from N..20R gets N)
+# In the feeds, MTA subway trips.txt is missing route_id for train 1; this
+# results in the loss of the train 1 after the route_id field is obtained
+# via join with trips table. This function is a workaround to get route_id
+# without the table join.
+
+def get_route_id(shape_id):
+    
+    '''Function to get route id out of shape id 
+    (Ex: from N..20R gets N)'''
+    
     route_id = shape_id.split('.')[0]
     return route_id
 
 
-## these are segments that represent unusual service (rush hour etc;)
-## and don't appear on MTA map.
+# these are segments that represent unusual service (rush hour etc;)
+# and don't appear on MTA map.
 segments_to_remove = ['E..N55R', 'E..S56R', 'E..S04R', 'E..N05R', 'N..N20R', 'N..S20R', '2..N03R',
                       '2..S03R', '4..S01R', '4..S02R', '4..S03R', '4..S13R', '4..N01R', '4..N02R',
                       '4..N03R', '4..N13R', '4..S40R', '5..S18R', '5..N18R', '5..N13R', '5..N06R',
@@ -94,10 +98,10 @@ for rail in rails:
 
     else:
         print(rail, 'removing "route short"')
-        gdf = gdf.drop('route_short', 1)  ## metro-north and LIRR don't have any records in route_short field
+        gdf = gdf.drop('route_short', 1)  # metro-north and LIRR don't have any records in route_short field
 
     if rail == 'nyc_subway':
-        gdf = gdf.drop('shape_id', 1)  ## shape_id column is no longer neeed, remove it before saving to shapefile
+        gdf = gdf.drop('shape_id', 1)  # shape_id column is no longer neeed, remove it before saving to shapefile
     else:
         gdf = gdf.drop(['shape_id', 'service_id'],
                        1)  # shape_id and service id column is no longer neeed, remove it before saving to shapefile

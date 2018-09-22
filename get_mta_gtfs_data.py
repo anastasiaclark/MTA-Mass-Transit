@@ -19,7 +19,7 @@ import zipfile
 mon_year = input('Please provide the folder name to create, Ex: May2018\n')
 
 # server_path=r'\\DFSN1V-B\Shares\LibShare\Shared\Divisions\Graduate\GEODATA\MASS_Transit'
-server_path = '/Users/anastasiaclark/MyStaff/Git_Work/MTA-Mass-Transit'
+server_path = os.getcwd()
 base_path = 'http://web.mta.info/developers'
 
 folders_to_create = ['nyc_subway', 'bk_bus', 'qn_bus', 'bus_company',

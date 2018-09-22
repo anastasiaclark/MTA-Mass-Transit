@@ -13,7 +13,7 @@ import pandas as pd
 import os
 from shapely.geometry import Point
 
-path_name = '/Users/anastasiaclark/MyStaff/Git_Work/MTA-Mass-Transit'
+path_name = os.getcwd()
 folder_name = input(
     'Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
 
@@ -23,7 +23,7 @@ shape_name = 'subway_entrances_' + folder_name + '.shp'
 entrances = pd.read_csv('http://web.mta.info/developers/data/nyct/subway/StationEntrances.csv')
 
 # write out the entrances data for archivial purposes
-entrances.to_csv(os.path.join(path_name, folder_name, 'StationEntrances.csv'))
+entrances.to_csv(os.path.join(os., folder_name, 'StationEntrances.csv'))
 
 # get counties to use in spatial join
 counties = gpd.read_file(os.path.join(path_name, 'counties_bndry.geojson'), driver='GeoJSON')

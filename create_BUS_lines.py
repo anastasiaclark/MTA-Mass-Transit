@@ -12,7 +12,7 @@ import pandas as pd
 import os
 from shapely.geometry import Point, LineString
 
-path = '/Users/anastasiaclark/MyStaff/Git_Work/MTA-Mass-Transit' 
+path = os.getcwd()
 folder_name = input(
     'Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
 

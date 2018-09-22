@@ -14,15 +14,15 @@ import pandas as pd
 from shapely.geometry import Point
 import os
 
-rails = ['LIRR', 'metro_north', 'nyc_subway']  # these are the services, for which
-# the shapes are created in this script
-
-path_name = '/Users/anastasiaclark/MyStaff/Git_Work/MTA-Mass-Transit'  # this path assumed to stay the same
+rails = ['LIRR', 'metro_north', 'nyc_subway']  # these are the services, for which the shapes are created in this script
+path_name = os.getcwd()
 folder_name = input(
     'Type in the name of the folder (ex: Oct2016) where the original data for each MTA service is stored: ')
+
 counties = gpd.read_file(os.path.join(path_name, 'counties_bndry.geojson'), driver='GeoJSON')
 counties = counties.to_crs(epsg=2263)
 
+# read-in file that idicates which train stops at which stations
 trains_at_stops = pd.read_csv('http://web.mta.info/developers/data/nyct/subway/Stations.csv',
                               usecols=['GTFS Stop ID', 'Daytime Routes', 'Structure'])
 
