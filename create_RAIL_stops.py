@@ -46,10 +46,9 @@ for rail in rails:
 
         stops = stops[stops.stop_id.isin(unique_stops)]  # remove stops that end in 'S' or 'N' from dataframe
 
-        # correct coordinates of the station with id='H01' and update name of the 138 station
+        # correct coordinates of the station with id='H01'
         stops.loc[stops['stop_id'] == 'H01', 'stop_lat'] = 40.672086
         stops.loc[stops['stop_id'] == 'H01', 'stop_lon'] = -73.835914
-        stops.loc[stops['stop_id'] == '138', 'stop_name'] = stops.stop_name + ' (Closed)'
         
         df = stops.loc[stops.duplicated(subset=['stop_lat', 'stop_lon'])][['stop_lat', 'stop_lon', 'stop_id']] # get the duplciate stations only; columns specified
         
