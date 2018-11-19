@@ -67,10 +67,7 @@ for rail in rails:
     trips_raw = pd.read_csv(os.path.join(path_name, folder_name, '{}'.format(rail), 'trips.txt'))
     trips = pd.DataFrame(trips_raw, columns=['route_id', 'service_id', 'shape_id'])
     trips = trips.drop_duplicates()
-    if rail == 'metro_north':
-        trips = trips[
-            trips.service_id == 1]  # filter by service id; metro_north feeds have some extra non-metro-north points
-
+   
     geometry = [Point(xy) for xy in zip(shapes.lon, shapes.lat)]  # create geometry points using Shapely's Point
     gdf = gpd.GeoDataFrame(shapes, geometry=geometry)  # create GeoDataFrame using df and created points as geometry
     gdf = gdf.groupby(['shape_id'])['geometry'].apply(
