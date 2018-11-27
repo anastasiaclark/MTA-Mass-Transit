@@ -62,7 +62,7 @@ print ('Downloading the data.............')
 # download and unzip the data into its appropriate folders
 for k, v in gtfs_d.items():
     name = '{}.zip'.format(folders_match[v])
-    urllib.request.urlretrieve(os.path.join(base_path, k), os.path.join(server_path, mon_year, folders_match[v], name))
+    urllib.request.urlretrieve(f'{base_path}/{k}', os.path.join(server_path, mon_year, folders_match[v], name))
     zip_ref = zipfile.ZipFile(os.path.join(server_path, mon_year, folders_match[v], name), 'r')
     zip_ref.extractall(os.path.join(server_path, mon_year, folders_match[v]))
     zip_ref.close()
