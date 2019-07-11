@@ -133,7 +133,7 @@ for borough in boroughs:
 
 # merges all express services into a single gdf    
 express_nyc = gpd.GeoDataFrame(pd.concat(express_services,
-                                         ignore_index=True))  
+                                         ignore_index=True, sort=False))  
 
 express_nyc = gpd.GeoDataFrame(express_nyc,
                                columns=['route_id', 
