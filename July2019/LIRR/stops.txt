@@ -10,7 +10,7 @@
 "20","Bethpage","Stewart Avenue and Jackson Avenue, 1 mile North of Hempstead Turnpike (Route 24), off Railroad Avenue.","40.743039240046","-73.483438209526","http://lirr42.mta.info/stationInfo.php?id=68","1"
 "21","Bellport","Station Road and Montauk Highway, South side of Main Street (Route 27A).","40.773738904482","-72.943965742491","http://lirr42.mta.info/stationInfo.php?id=126","1"
 "23","Bellerose","Commonwealth Boulevard and Superior Road,  1/4 mile South of Jericho Turnpike.","40.72220443209","-73.716652885972","http://lirr42.mta.info/stationInfo.php?id=33","2"
-"24","Belmont","At Belmont Park.","40.713687541089","-73.728297219953","http://lirr42.mta.info/stationInfo.php?id=32","2"
+"24","Belmont Park","At Belmont Park.","40.713687541089","-73.728297219953","http://lirr42.mta.info/stationInfo.php?id=32","2"
 "25","Bayside","213th Street and  41st Avenue, off Bell Boulevard and just north of Northern Boulevard.","40.763152407322","-73.771249864065","http://lirr42.mta.info/stationInfo.php?id=22","1"
 "26","Bay Shore","Park Avenue and Oak Street to Railroad Plaza, just North of Union Boulevard.","40.724433435417","-73.254082948452","http://lirr42.mta.info/stationInfo.php?id=119","1"
 "27","Babylon","Railroad Avenue just West of Deer Park Avenue, 1 mile South of Sunrise Highway (Route 27).","40.700689424802","-73.324055613067","http://lirr42.mta.info/stationInfo.php?id=118","1"

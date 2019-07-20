@@ -9,5 +9,5 @@
 "8","","West Hempstead","2","00A1DE","FFFFFF"
 "9","","Port Washington","2","C60C30","FFFFFF"
 "10","","Port Jefferson","2","0039A6","FFFFFF"
-"11","","Belmont","2","60269E","FFFFFF"
+"11","","Belmont Park","2","60269E","FFFFFF"
 "12","","City Zone","2","4D5357","FFFFFF"

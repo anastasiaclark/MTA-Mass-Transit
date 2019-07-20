@@ -1,0 +1,4 @@
+note_id,note_mark,note_title,note_description
+D,D,,Stops only to discharge customers
+H,H,,Primarily to discharge customers. Train may depart 5 minutes earlier than the time shown
+R,R,,Stops only to recieve customers
