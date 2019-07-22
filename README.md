@@ -16,5 +16,4 @@ These scripts were originally written to create the [NYC Mass Transit Layers ser
 
 # How to run
 1. Clone the repo
-2. [Download MTA Static feeds first by running get_mta_gtfs_data.py](get_mta_gtfs_data.py). Enter folder name when prompted.
-3. Run the rest of the scripts and provide same folder name as in step 2 when prompted
+2. open and run eiter main.py or main.ipynb to download the data and create shapefiels
