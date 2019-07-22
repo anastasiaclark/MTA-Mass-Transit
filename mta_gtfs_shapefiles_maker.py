@@ -7,13 +7,13 @@ import logging
 import datetime
 
 # configure logger
-logger = logging.getLogger (__name__)
-logger.setLevel (logging.INFO)
-handler = logging.FileHandler ("error_log.log")
-handler.setLevel (logging.ERROR)
-formatter = logging.Formatter ("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-handler.setFormatter (formatter)
-logger.addHandler (handler)
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+handler = logging.FileHandler("error_log.log")
+handler.setLevel(logging.ERROR)
+formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 # these are the segments that represent unusual service (rush hour etc;)
 # and don't appear on MTA map.
@@ -77,17 +77,17 @@ d = {
 }
 
 # create a dataframe from group dictionary
-route_groups = pd.DataFrame (
-    [[key, value] for key, value in d.items ()], columns=["route_id", "group"]
+route_groups = pd.DataFrame(
+    [[key, value] for key, value in d.items()], columns=["route_id", "group"]
 )
 
 # read-in file that indicates which trains stop at which stations
-trains_at_stops = pd.read_csv (
+trains_at_stops = pd.read_csv(
     "http://web.mta.info/developers/data/nyct/subway/Stations.csv",
     usecols=["GTFS Stop ID", "Daytime Routes", "Structure"],
 )
 
-trains_at_stops.rename (
+trains_at_stops.rename(
     columns={
         "GTFS Stop ID": "stop_id",
         "Daytime Routes": "trains",
@@ -97,8 +97,8 @@ trains_at_stops.rename (
 )
 
 # monthYear is appended to all shapefiles names
-today = datetime.datetime.today ()
-month = today.strftime ("%B")
+today = datetime.datetime.today()
+month = today.strftime("%B")
 year = today.year
 monthYear = f"{month}{year}"
 
@@ -120,25 +120,25 @@ def pre_process_stops(path, folder, bus_service):
      100071|HENRY HUDSON PKY E/W 239 ST   |40.889520 |-73.908064|BXM2
 
     """
-    stops = pd.read_csv (
-        os.path.join (path, folder, bus_service, "stops.txt"),
+    stops = pd.read_csv(
+        os.path.join(path, folder, bus_service, "stops.txt"),
         usecols=["stop_id", "stop_name", "stop_lat", "stop_lon"],
     )
-    stop_times = pd.read_csv (os.path.join (path, folder, bus_service, "stop_times.txt"))
-    trips = pd.read_csv (os.path.join (path, folder, bus_service, "trips.txt"))
-    df = stop_times.merge (trips, on="trip_id")
-    routes_for_stops = pd.DataFrame (
-        df.groupby ("stop_id")["route_id"].agg (lambda x: list (set (x)))
-    ).reset_index ()
+    stop_times = pd.read_csv(os.path.join(path, folder, bus_service, "stop_times.txt"))
+    trips = pd.read_csv(os.path.join(path, folder, bus_service, "trips.txt"))
+    df = stop_times.merge(trips, on="trip_id")
+    routes_for_stops = pd.DataFrame(
+        df.groupby("stop_id")["route_id"].agg(lambda x: list(set(x)))
+    ).reset_index()
     stop_id_route = (
-        routes_for_stops.route_id.apply (pd.Series)
-            .merge (routes_for_stops, left_index=True, right_index=True)
-            .drop (["route_id"], axis=1)
-            .melt (id_vars="stop_id", value_name="route_id")
-            .drop ("variable", axis=1)
-            .dropna ()
+        routes_for_stops.route_id.apply(pd.Series)
+        .merge(routes_for_stops, left_index=True, right_index=True)
+        .drop(["route_id"], axis=1)
+        .melt(id_vars="stop_id", value_name="route_id")
+        .drop("variable", axis=1)
+        .dropna()
     )
-    return stops.merge (stop_id_route, on="stop_id")
+    return stops.merge(stop_id_route, on="stop_id")
 
 
 def read_lines_tables(path, folder, service):
@@ -146,15 +146,15 @@ def read_lines_tables(path, folder, service):
     
     Returns: routes, shapes, trips (tuple): DataFrames for routes, shapes, and trips
     """
-    routes = pd.read_csv (
-        os.path.join (path, folder, f"{service}", "routes.txt"), dtype={"route_id": str}
+    routes = pd.read_csv(
+        os.path.join(path, folder, f"{service}", "routes.txt"), dtype={"route_id": str}
     )
-    routes = pd.DataFrame (
+    routes = pd.DataFrame(
         routes,
         columns=["route_id", "route_short_name", "route_long_name", "route_color"],
     )
 
-    routes.rename (
+    routes.rename(
         columns={
             "route_short_name": "route_short",
             "route_long_name": "route_long",
@@ -163,22 +163,22 @@ def read_lines_tables(path, folder, service):
         inplace=True,
     )
 
-    shapes = pd.read_csv (
-        os.path.join (path, folder, f"{service}", "shapes.txt"),
+    shapes = pd.read_csv(
+        os.path.join(path, folder, f"{service}", "shapes.txt"),
         usecols=["shape_id", "shape_pt_lat", "shape_pt_lon", "shape_pt_sequence"],
         dtype={"shape_id": str},
     )
 
-    shapes.rename (columns={"shape_pt_lat": "lat", "shape_pt_lon": "lon"}, inplace=True)
+    shapes.rename(columns={"shape_pt_lat": "lat", "shape_pt_lon": "lon"}, inplace=True)
 
-    shapes.sort_values (["shape_id", "shape_pt_sequence"], inplace=True)
+    shapes.sort_values(["shape_id", "shape_pt_sequence"], inplace=True)
 
-    trips = pd.read_csv (
-        os.path.join (path, folder, f"{service}", "trips.txt"),
+    trips = pd.read_csv(
+        os.path.join(path, folder, f"{service}", "trips.txt"),
         usecols=["route_id", "direction_id", "shape_id"],
         dtype={"shape_id": str, "route_id": str},
     )
-    trips = trips.rename (columns={"direction_id": "dir_id"}).drop_duplicates ()
+    trips = trips.rename(columns={"direction_id": "dir_id"}).drop_duplicates()
     return routes, shapes, trips
 
 
@@ -194,18 +194,18 @@ def create_line_segments(df, x="lon", y="lat"):
             gdf: (GeoDataFrame) Line GeoDataFrame in NAD83 Coordinate System 
     """
 
-    if df[x].isna ().sum () > 0 or df[y].isna ().sum () > 0:
+    if df[x].isna().sum() > 0 or df[y].isna().sum() > 0:
         raise "DataFrame contains Null coordinates"
 
-    points = [Point (xy) for xy in zip (df[x], df[y])]
-    gdf = gpd.GeoDataFrame (df.copy (), geometry=points)
+    points = [Point(xy) for xy in zip(df[x], df[y])]
+    gdf = gpd.GeoDataFrame(df.copy(), geometry=points)
     line_segments = (
-        gdf.groupby (["shape_id"])["geometry"]
-            .apply (lambda x: LineString (x.tolist ()))
-            .reset_index ()
+        gdf.groupby(["shape_id"])["geometry"]
+        .apply(lambda x: LineString(x.tolist()))
+        .reset_index()
     )
 
-    gdf_out = gpd.GeoDataFrame (line_segments, geometry="geometry", crs=from_epsg (4269))
+    gdf_out = gpd.GeoDataFrame(line_segments, geometry="geometry", crs=from_epsg(4269))
     return gdf_out
 
 
@@ -220,12 +220,25 @@ def create_point_shapes(df, x="stop_lon", y="stop_lat"):
         Returns: 
             gdf: (GeoDataFrame) Point GeoDataFrame in NAD83 Coordinate System
     """
-    if df[x].isna ().sum () > 0 or df[y].isna ().sum () > 0:
-        raise Exception ("DataFrame contains Null coordinates")
+    if df[x].isna().sum() > 0 or df[y].isna().sum() > 0:
+        raise Exception("DataFrame contains Null coordinates")
 
-    points = [Point (xy) for xy in zip (df[x], df[y])]
-    gdf = gpd.GeoDataFrame (df, geometry=points, crs=from_epsg (4269))
+    points = [Point(xy) for xy in zip(df[x], df[y])]
+    gdf = gpd.GeoDataFrame(df, geometry=points, crs=from_epsg(4269))
     return gdf
+
+
+def write_feature_report(path, folder, feature, feature_name):
+    """Write feature count to text file
+       Params:
+           path(str): Path to the directory where GTFS data is stored
+           folder (str): Name of the folder where the GTFS data is stored
+           feature (GeoDataFrame): GeoDataFrame object for which to write feature count
+           feature_name (str): Output name of the feture
+        
+    """
+    with open(os.path.join(path, folder, "feature_report.txt"), "a") as report_file:
+        report_file.write(f"Feature count for {feature_name} = {feature.shape[0]}\n")
 
 
 def make_rail_stops_shapefiles(path, folder, rail):
@@ -240,24 +253,24 @@ def make_rail_stops_shapefiles(path, folder, rail):
         as the the input parameters.
     """
     try:
-        counties = gpd.read_file (
-            os.path.join (path, "counties_bndry.geojson"), driver="GeoJSON"
+        counties = gpd.read_file(
+            os.path.join(path, "counties_bndry.geojson"), driver="GeoJSON"
         )
         # reproject to NY State Plane
-        counties = counties.to_crs (epsg=2263)
+        counties = counties.to_crs(epsg=2263)
 
-        stops = pd.read_csv (
-            os.path.join (path, folder, f"{rail}", "stops.txt"),
+        stops = pd.read_csv(
+            os.path.join(path, folder, f"{rail}", "stops.txt"),
             usecols=["stop_id", "stop_name", "stop_lat", "stop_lon"],
         )
 
         stops = stops.loc[
-            stops["stop_id"].isin (
-                stops.stop_id.astype (str)
-                    .str.rstrip ("N")
-                    .str.rstrip ("S")
-                    .unique ()
-                    .tolist ()
+            stops["stop_id"].isin(
+                stops.stop_id.astype(str)
+                .str.rstrip("N")
+                .str.rstrip("S")
+                .unique()
+                .tolist()
             )
         ]
 
@@ -265,18 +278,18 @@ def make_rail_stops_shapefiles(path, folder, rail):
         stops.loc[stops["stop_id"] == "H01", "stop_lat"] = 40.672086
         stops.loc[stops["stop_id"] == "H01", "stop_lon"] = -73.835914
 
-        df = stops.loc[stops.duplicated (subset=["stop_lat", "stop_lon"])][
+        df = stops.loc[stops.duplicated(subset=["stop_lat", "stop_lon"])][
             ["stop_lat", "stop_lon", "stop_id"]
         ]  # get the duplicate stations only; columns specified
-        df.rename (
+        df.rename(
             columns={"stop_id": "stop_id2"}, inplace=True
         )  # rename the last column; it will be used as stop_id2 to reference the removed duplicates
 
         if rail == "nyc_subway":
             stops = (
-                stops.merge (trains_at_stops, on="stop_id", how="outer")
-                    .drop_duplicates (["stop_lat", "stop_lon"], keep="first")
-                    .merge (df, on=["stop_lat", "stop_lon"], how="left")
+                stops.merge(trains_at_stops, on="stop_id", how="outer")
+                .drop_duplicates(["stop_lat", "stop_lon"], keep="first")
+                .merge(df, on=["stop_lat", "stop_lon"], how="left")
             )
         elif rail == "metro_north":
             # these are stops where shuttle bus make stops
@@ -286,46 +299,58 @@ def make_rail_stops_shapefiles(path, folder, rail):
                 & (stops["stop_id"] < 1000)
                 | (stops["stop_id"] == 14)
                 | (stops["stop_id"] == 16)
-                ].copy ()
+            ].copy()
             stops = stops.loc[
                 (stops["stop_id"] < 500) | (stops["stop_id"] == 622)
-                ].copy ()
-            stops = stops.drop_duplicates (["stop_lat", "stop_lon"], keep="first")
-            bus_stops_geo = create_point_shapes (metro_north_bus_stops)
-            bus_stops_geo = bus_stops_geo.to_crs (
-                from_epsg (2263)
+            ].copy()
+            stops = stops.drop_duplicates(["stop_lat", "stop_lon"], keep="first")
+            bus_stops_geo = create_point_shapes(metro_north_bus_stops)
+            bus_stops_geo = bus_stops_geo.to_crs(
+                from_epsg(2263)
             )  # reproject to NY State Plane (ft)
-            bus_stops_geo = gpd.sjoin (
+            bus_stops_geo = gpd.sjoin(
                 bus_stops_geo, counties, how="inner", op="intersects"
-            ).drop ("index_right", 1)
+            ).drop("index_right", 1)
             # save shuttle bus GeoDataframe to shapefiles
-            bus_stops_geo.to_file (
-                os.path.join (
+            bus_stops_geo.to_file(
+                os.path.join(
                     path, folder, "shapes", f"{rail}_bx_bus_{monthYear.lower()}.shp"
-
                 )
+            )
+            write_feature_report(
+                path=path,
+                folder=folder,
+                feature=bus_stops_geo,
+                feature_name=f"{rail}_bx_bus_{monthYear.lower()}.shp",
             )
 
         else:
-            stops = stops.drop_duplicates (["stop_lat", "stop_lon"], keep="first")
+            stops = stops.drop_duplicates(["stop_lat", "stop_lon"], keep="first")
 
-        stops_geo = create_point_shapes (stops)
-        stops_geo = stops_geo.to_crs (
-            from_epsg (2263)
+        stops_geo = create_point_shapes(stops)
+        stops_geo = stops_geo.to_crs(
+            from_epsg(2263)
         )  # reproject to NY State Plane (ft)
-        stops_geo = gpd.sjoin (stops_geo, counties, how="inner", op="intersects").drop (
+        stops_geo = gpd.sjoin(stops_geo, counties, how="inner", op="intersects").drop(
             "index_right", 1
         )
         # save GeoDataframe to shapefiles
-        stops_geo.to_file (
-            os.path.join (
+        stops_geo.to_file(
+            os.path.join(
                 path, folder, "shapes", f"stops_{rail}_{monthYear.lower()}.shp"
             )
         )
-        print (f"Created stop shapefiles for {rail}")
+
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=stops_geo,
+            feature_name=f"stops_{rail}_{monthYear.lower()}.shp",
+        )
+        print(f"Created stop shapefiles for {rail}")
 
     except Exception as e:
-        logger.exception ("Unexpected exception occurred")
+        logger.exception("Unexpected exception occurred")
         raise
 
 
@@ -341,37 +366,37 @@ def make_rail_routes_shapefiles(path, folder, rail):
             as the the input parameters.
     """
     try:
-        routes, shapes, trips = read_lines_tables (
+        routes, shapes, trips = read_lines_tables(
             path=path, folder=folder, service=rail
         )
         # create new df that doesn't contain unusual service for MTA (applies to subway only)
 
         if rail == "nyc_subway":
-            shapes = shapes[~shapes["shape_id"].isin (subway_segments_to_remove)]
+            shapes = shapes[~shapes["shape_id"].isin(subway_segments_to_remove)]
 
         if rail == "metro_north":
             # these shape_ids are from the generalized version of the routes
-            shapes = shapes.loc[~shapes["shape_id"].isin (["52", "51", "33", "34"])]
+            shapes = shapes.loc[~shapes["shape_id"].isin(["52", "51", "33", "34"])]
 
-        shapes = shapes.merge (
+        shapes = shapes.merge(
             trips[["route_id", "shape_id"]], on="shape_id", how="left"
-        ).drop_duplicates ()
+        ).drop_duplicates()
 
-        line_segments = create_line_segments (shapes)
+        line_segments = create_line_segments(shapes)
 
         if rail == "nyc_subway":
-            line_segments["route_id"] = line_segments["shape_id"].str.split (
+            line_segments["route_id"] = line_segments["shape_id"].str.split(
                 ".", expand=True
             )[0]
         else:
-            line_segments = line_segments.merge (trips, on="shape_id").drop ('dir_id', 1)
+            line_segments = line_segments.merge(trips, on="shape_id").drop("dir_id", 1)
 
-        lines = line_segments.dissolve (by="route_id", as_index=False)
+        lines = line_segments.dissolve(by="route_id", as_index=False)
 
-        rail_lines = lines.merge (routes, on="route_id")
+        rail_lines = lines.merge(routes, on="route_id")
 
         if rail == "nyc_subway":
-            rail_lines = rail_lines.merge (
+            rail_lines = rail_lines.merge(
                 route_groups, on="route_id"
             )  # table join for groups (subway only)
             # add missing colors for S and SIR lines of the subway
@@ -380,18 +405,30 @@ def make_rail_routes_shapefiles(path, folder, rail):
             rail_lines.loc[rail_lines["route_id"] == "SI", "color"] = "053159"
             # and make route_short equal to JZ rather than J
             rail_lines.loc[rail_lines["route_id"] == "J", "route_short"] = "JZ"
-            rail_lines = rail_lines.drop ("shape_id", 1)
+            rail_lines = rail_lines.drop("shape_id", 1)
         else:
-            rail_lines = rail_lines.drop (["shape_id", "route_short"], 1)
+            rail_lines = rail_lines.drop(["shape_id", "route_short"], 1)
         rail_lines["color"] = "#" + rail_lines["color"]
-        rail_lines = rail_lines.to_crs (epsg=2263)  # reproject to State Plane
+        rail_lines = rail_lines.to_crs(epsg=2263)  # reproject to State Plane
         # save GeoDataframe to shapefiles
-        rail_lines.to_file (
-            os.path.join (path, folder, "shapes", f"routes_{rail}_{folder}_{monthYear.lower()}.shp")
+        rail_lines.to_file(
+            os.path.join(
+                path,
+                folder,
+                "shapes",
+                f"routes_{rail}_{monthYear.lower()}.shp",
+            )
         )
-        print (f"Created route shapefiles for {rail}")
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=rail_lines,
+            feature_name=f"routes_{rail}_{monthYear.lower()}.shp",
+        )
+
+        print(f"Created route shapefiles for {rail}")
     except Exception as e:
-        logger.exception ("Unexpected exception occurred")
+        logger.exception("Unexpected exception occurred")
         raise
 
 
@@ -409,56 +446,70 @@ def make_bus_stops_shapefiles(path, folder):
     bus_stops = []
     try:
         for bus_service in bus_services:
-            stops = pre_process_stops (path=path, folder=folder, bus_service=bus_service)
-            bus_stops.append (stops)
+            stops = pre_process_stops(path=path, folder=folder, bus_service=bus_service)
+            bus_stops.append(stops)
 
-        all_stops = pd.concat (bus_stops)
+        all_stops = pd.concat(bus_stops)
 
-        local_stops_mask = all_stops["route_id"].str.match (
+        local_stops_mask = all_stops["route_id"].str.match(
             r"([A-W-Z]\d+|BX\d+)(?!^X\.*?)", na=False
         )
-        local_stops = all_stops.loc[local_stops_mask].copy ()
-        express_stops = all_stops.loc[~local_stops_mask].copy ()
+        local_stops = all_stops.loc[local_stops_mask].copy()
+        express_stops = all_stops.loc[~local_stops_mask].copy()
 
-        local_stop_shapes = create_point_shapes (local_stops)
-        local_stop_shapes = local_stop_shapes.to_crs (from_epsg (2263))
+        local_stop_shapes = create_point_shapes(local_stops)
+        local_stop_shapes = local_stop_shapes.to_crs(from_epsg(2263))
 
-        express_stop_shapes = create_point_shapes (express_stops)
-        express_stop_shapes = express_stop_shapes.to_crs (from_epsg (2263))
+        express_stop_shapes = create_point_shapes(express_stops)
+        express_stop_shapes = express_stop_shapes.to_crs(from_epsg(2263))
 
-        counties = gpd.read_file (
-            os.path.join (path, "counties_bndry.geojson"), driver="GeoJSON"
+        counties = gpd.read_file(
+            os.path.join(path, "counties_bndry.geojson"), driver="GeoJSON"
         )
 
         # reproject to NY State Plane (ft)
-        counties = counties.to_crs (from_epsg (2263))
+        counties = counties.to_crs(from_epsg(2263))
 
-        local_stop_shapes = gpd.sjoin (
+        local_stop_shapes = gpd.sjoin(
             local_stop_shapes, counties, how="inner", op="intersects"
-        ).drop (["route_id", "index_right"], 1)
+        ).drop(["route_id", "index_right"], 1)
 
-        express_stop_shapes = gpd.sjoin (
+        express_stop_shapes = gpd.sjoin(
             express_stop_shapes, counties, how="inner", op="intersects"
-        ).drop (["route_id", "index_right"], 1)
+        ).drop(["route_id", "index_right"], 1)
 
         # save GeoDataframes to shapefiles
-        local_stop_shapes.drop_duplicates (
+        local_stop_shapes.drop_duplicates(
             subset=["stop_id", "stop_lat", "stop_lon"]
-        ).to_file (
-            os.path.join (path, folder, "shapes", f"bus_stops_nyc_{monthYear.lower()}.shp")
+        ).to_file(
+            os.path.join(
+                path, folder, "shapes", f"bus_stops_nyc_{monthYear.lower()}.shp"
+            )
         )
 
-        express_stop_shapes.drop_duplicates (
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=local_stop_shapes,
+            feature_name=f"bus_stops_nyc_{monthYear.lower()}.shp",
+        )
+        express_stop_shapes.drop_duplicates(
             subset=["stop_id", "stop_lat", "stop_lon"]
-        ).to_file (
-            os.path.join (
+        ).to_file(
+            os.path.join(
                 path, folder, "shapes", f"express_bus_stops_nyc_{monthYear.lower()}.shp"
             )
         )
-        print (f"Created stop shapefiles for local and express bus stops")
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=express_stop_shapes,
+            feature_name=f"express_bus_stops_nyc_{monthYear.lower()}.shp",
+        )
+        print(f"Created stop shapefiles for local and express bus stops")
 
     except Exception as e:
-        logger.exception ("Unexpected exception occurred")
+        logger.exception("Unexpected exception occurred")
         raise
 
 
@@ -477,52 +528,52 @@ def make_bus_routes_shapefiles(path, folder):
     local_services = []
     try:
         for bus_service in bus_services:
-            routes, shapes, trips = read_lines_tables (path, folder, service=bus_service)
+            routes, shapes, trips = read_lines_tables(path, folder, service=bus_service)
 
-            shapes = shapes.merge (
+            shapes = shapes.merge(
                 trips[["route_id", "shape_id"]], on="shape_id"
-            ).drop_duplicates ()
+            ).drop_duplicates()
 
-            bus_shapes = shapes.merge (routes, on="route_id")  # table join
+            bus_shapes = shapes.merge(routes, on="route_id")  # table join
 
-            bus_route_shapes = create_point_shapes (bus_shapes, x="lon", y="lat")
+            bus_route_shapes = create_point_shapes(bus_shapes, x="lon", y="lat")
 
-            line_segments = create_line_segments (bus_route_shapes)
+            line_segments = create_line_segments(bus_route_shapes)
 
             # merge trips and routes to line segments
-            gdf = line_segments.merge (trips, on="shape_id", how="left")
+            gdf = line_segments.merge(trips, on="shape_id", how="left")
 
-            gdf = gdf.merge (
+            gdf = gdf.merge(
                 routes, on="route_id", how="left"
             )  # table join to get Route associated columns
 
             # creates new column as concatenation of route_id and direction_id
-            gdf["route_dir"] = gdf.route_id.astype (str).str.cat (
-                gdf.dir_id.astype (str), sep="_"
+            gdf["route_dir"] = gdf.route_id.astype(str).str.cat(
+                gdf.dir_id.astype(str), sep="_"
             )
 
             # dissolves on route_dir to get single line per route
-            route_gdf = gdf.dissolve (by="route_dir", as_index=False)
+            route_gdf = gdf.dissolve(by="route_dir", as_index=False)
 
             # make hex number for colors
-            route_gdf["color"] = "#" + route_gdf["color"].astype (str)
+            route_gdf["color"] = "#" + route_gdf["color"].astype(str)
 
             # create a boolean mask with True values for local services
-            local = route_gdf["route_id"].str.match (
+            local = route_gdf["route_id"].str.match(
                 r"([A-W-Z]\d+|BX\d+)(?!^X\.*?)", na=False
             )
 
             # apply mask to get local routes
-            local_routes = route_gdf.loc[local].copy ()
+            local_routes = route_gdf.loc[local].copy()
 
             # apply the inverse of mask to get express routes
-            express_routes = route_gdf.loc[~local].copy ()
+            express_routes = route_gdf.loc[~local].copy()
 
-            local_services.append (local_routes)
-            express_services.append (express_routes)
+            local_services.append(local_routes)
+            express_services.append(express_routes)
 
-        express_route_gdf = gpd.GeoDataFrame (
-            pd.concat (express_services, sort=False),
+        express_route_gdf = gpd.GeoDataFrame(
+            pd.concat(express_services, sort=False),
             columns=[
                 "route_id",
                 #                 "dir_id",
@@ -532,11 +583,11 @@ def make_bus_routes_shapefiles(path, folder):
                 "route_long",
                 "color",
             ],
-            crs=from_epsg (4269),
+            crs=from_epsg(4269),
         )
 
-        local_route_gdf = gpd.GeoDataFrame (
-            pd.concat (local_services, sort=False),
+        local_route_gdf = gpd.GeoDataFrame(
+            pd.concat(local_services, sort=False),
             columns=[
                 "route_id",
                 #                 "dir_id",
@@ -546,29 +597,47 @@ def make_bus_routes_shapefiles(path, folder):
                 "route_long",
                 "color",
             ],
-            crs=from_epsg (4269),
+            crs=from_epsg(4269),
         )
 
-        local_route_gdf = local_route_gdf.to_crs (
-            from_epsg (2263)
+        local_route_gdf = local_route_gdf.to_crs(
+            from_epsg(2263)
         )  # reproject to NY State Plane (ft)
-        express_route_gdf = express_route_gdf.to_crs (
-            from_epsg (2263)
+        express_route_gdf = express_route_gdf.to_crs(
+            from_epsg(2263)
         )  # reproject to NY State Plane (ft)
 
         # save GeoDataframes to shapefiles
-        local_route_gdf.to_file (
-            os.path.join (path, folder, "shapes", f"bus_routes_nyc_{monthYear.lower()}.shp")
-        )
-        express_route_gdf.to_file (
-            os.path.join (
-                path, folder, "shapes", f"express_bus_routes_nyc_{monthYear.lower()}.shp"
+        local_route_gdf.to_file(
+            os.path.join(
+                path, folder, "shapes", f"bus_routes_nyc_{monthYear.lower()}.shp"
             )
         )
-        print (f"Created line shapefiles for local and express bus routes")
+
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=local_route_gdf,
+            feature_name=f"bus_routes_nyc_{monthYear.lower()}.shp",
+        )
+        express_route_gdf.to_file(
+            os.path.join(
+                path,
+                folder,
+                "shapes",
+                f"express_bus_routes_nyc_{monthYear.lower()}.shp",
+            )
+        )
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=express_route_gdf,
+            feature_name=f"express_bus_routes_nyc_{monthYear.lower()}.shp",
+        )
+        print(f"Created line shapefiles for local and express bus routes")
 
     except Exception as e:
-        logger.exception ("Unexpected exception occurred")
+        logger.exception("Unexpected exception occurred")
         raise
 
 
@@ -587,19 +656,19 @@ def make_subway_entrances_shapefiles(path, folder):
 
     try:
         # read the entrances data directly from MTA's website
-        entrances = pd.read_csv (
+        entrances = pd.read_csv(
             "http://web.mta.info/developers/data/nyct/subway/StationEntrances.csv"
         )
 
         # write out the entrances data for archivial purposes
-        entrances.to_csv (os.path.join (path, folder, "StationEntrances.csv"))
+        entrances.to_csv(os.path.join(path, folder, "StationEntrances.csv"))
 
         # get counties to use in spatial join
-        counties = gpd.read_file (
-            os.path.join (path, "counties_bndry.geojson"), driver="GeoJSON"
+        counties = gpd.read_file(
+            os.path.join(path, "counties_bndry.geojson"), driver="GeoJSON"
         )
-        counties = counties.to_crs (
-            from_epsg (2263)
+        counties = counties.to_crs(
+            from_epsg(2263)
         )  # reproject counties to NY State Plane
 
         # give shorter names to columns
@@ -638,24 +707,33 @@ def make_subway_entrances_shapefiles(path, folder):
 
         # one of the longtitudes is missing negative sign
         # multiply longtitude by -1 where it is positive (in US it will always be negative)
-        entrances.update (entrances.loc[entrances["lon"] > 0, "lon"].mul (-1))
-        entrances_shapes = create_point_shapes (entrances, x="lon", y="lat")
-        entrances_shapes = entrances_shapes.to_crs (
-            from_epsg (2263)
+        entrances.update(entrances.loc[entrances["lon"] > 0, "lon"].mul(-1))
+        entrances_shapes = create_point_shapes(entrances, x="lon", y="lat")
+        entrances_shapes = entrances_shapes.to_crs(
+            from_epsg(2263)
         )  # reproject to NY State Plane (ft)
-        entrances_shapes = gpd.sjoin (
+        entrances_shapes = gpd.sjoin(
             entrances_shapes, counties, how="inner", op="intersects"
-        ).drop (
+        ).drop(
             "index_right", 1
         )  # spatially join entraces to counties layer
         # change data type of the ADA and free_cross columns -- boolean fields can't be written into shapefile
-        entrances_shapes["ada"] = entrances_shapes["ada"].astype (str)
-        entrances_shapes["free_cross"] = entrances_shapes["free_cross"].astype (str)
-        entrances_shapes.to_file (
-            os.path.join (path, folder, "shapes", f"subway_entrances_{monthYear.lower()}.shp")
+        entrances_shapes["ada"] = entrances_shapes["ada"].astype(str)
+        entrances_shapes["free_cross"] = entrances_shapes["free_cross"].astype(str)
+        entrances_shapes.to_file(
+            os.path.join(
+                path, folder, "shapes", f"subway_entrances_{monthYear.lower()}.shp"
+            )
         )  # write geodataframe to shapefile
-        print (f"Created subway entrances shapefiles")
+
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=entrances_shapes,
+            feature_name=f"subway_entrances_{monthYear.lower()}.shp",
+        )
+        print(f"Created subway entrances shapefiles")
 
     except Exception as e:
-        logger.exception ("Unexpected exception occurred")
+        logger.exception("Unexpected exception occurred")
         raise

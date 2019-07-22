@@ -81,7 +81,6 @@ route_groups = pd.DataFrame(
     [[key, value] for key, value in d.items()], columns=["route_id", "group"]
 )
 
-
 # read-in file that indicates which trains stop at which stations
 trains_at_stops = pd.read_csv(
     "http://web.mta.info/developers/data/nyct/subway/Stations.csv",
@@ -99,7 +98,7 @@ trains_at_stops.rename(
 
 # monthYear is appended to all shapefiles names
 today = datetime.datetime.today()
-month = today.strftime("%B").lower()
+month = today.strftime("%B")
 year = today.year
 monthYear = f"{month}{year}"
 
@@ -185,7 +184,7 @@ def read_lines_tables(path, folder, service):
 
 def create_line_segments(df, x="lon", y="lat"):
     """Creates a GeodataFrame of line segments from the 
-        shapes datframe (CRS is NAD83) 
+        shapes dataframe (CRS is NAD83)
         
        Params:
             df (DataFrame): pandas DataFrame 
@@ -227,6 +226,19 @@ def create_point_shapes(df, x="stop_lon", y="stop_lat"):
     points = [Point(xy) for xy in zip(df[x], df[y])]
     gdf = gpd.GeoDataFrame(df, geometry=points, crs=from_epsg(4269))
     return gdf
+
+
+def write_feature_report(path, folder, feature, feature_name):
+    """Write feature count to text file
+       Params:
+           path(str): Path to the directory where GTFS data is stored
+           folder (str): Name of the folder where the GTFS data is stored
+           feature (GeoDataFrame): GeoDataFrame object for which to write feature count
+           feature_name (str): Output name of the feture
+        
+    """
+    with open(os.path.join(path, folder, "feature_report.txt"), "a") as report_file:
+        report_file.write(f"Feature count for {feature_name} = {feature.shape[0]}\n")
 
 
 def make_rail_stops_shapefiles(path, folder, rail):
@@ -303,8 +315,13 @@ def make_rail_stops_shapefiles(path, folder, rail):
             bus_stops_geo.to_file(
                 os.path.join(
                     path, folder, "shapes", f"{rail}_bx_bus_{monthYear.lower()}.shp"
-
                 )
+            )
+            write_feature_report(
+                path=path,
+                folder=folder,
+                feature=bus_stops_geo,
+                feature_name=f"{rail}_bx_bus_{monthYear.lower()}.shp",
             )
 
         else:
@@ -317,11 +334,18 @@ def make_rail_stops_shapefiles(path, folder, rail):
         stops_geo = gpd.sjoin(stops_geo, counties, how="inner", op="intersects").drop(
             "index_right", 1
         )
-         # save GeoDataframe to shapefiles
+        # save GeoDataframe to shapefiles
         stops_geo.to_file(
             os.path.join(
                 path, folder, "shapes", f"stops_{rail}_{monthYear.lower()}.shp"
             )
+        )
+
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=stops_geo,
+            feature_name=f"stops_{rail}_{monthYear.lower()}.shp",
         )
         print(f"Created stop shapefiles for {rail}")
 
@@ -365,7 +389,7 @@ def make_rail_routes_shapefiles(path, folder, rail):
                 ".", expand=True
             )[0]
         else:
-            line_segments = line_segments.merge(trips, on="shape_id").drop('dir_id', 1)
+            line_segments = line_segments.merge(trips, on="shape_id").drop("dir_id", 1)
 
         lines = line_segments.dissolve(by="route_id", as_index=False)
 
@@ -388,8 +412,20 @@ def make_rail_routes_shapefiles(path, folder, rail):
         rail_lines = rail_lines.to_crs(epsg=2263)  # reproject to State Plane
         # save GeoDataframe to shapefiles
         rail_lines.to_file(
-            os.path.join(path, folder, "shapes", f"routes_{rail}_{folder}_{monthYear.lower()}.shp")
+            os.path.join(
+                path,
+                folder,
+                "shapes",
+                f"routes_{rail}_{monthYear.lower()}.shp",
+            )
         )
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=rail_lines,
+            feature_name=f"routes_{rail}_{monthYear.lower()}.shp",
+        )
+
         print(f"Created route shapefiles for {rail}")
     except Exception as e:
         logger.exception("Unexpected exception occurred")
@@ -446,15 +482,29 @@ def make_bus_stops_shapefiles(path, folder):
         local_stop_shapes.drop_duplicates(
             subset=["stop_id", "stop_lat", "stop_lon"]
         ).to_file(
-            os.path.join(path, folder, "shapes", f"bus_stops_nyc_{monthYear.lower()}.shp")
+            os.path.join(
+                path, folder, "shapes", f"bus_stops_nyc_{monthYear.lower()}.shp"
+            )
         )
 
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=local_stop_shapes,
+            feature_name=f"bus_stops_nyc_{monthYear.lower()}.shp",
+        )
         express_stop_shapes.drop_duplicates(
             subset=["stop_id", "stop_lat", "stop_lon"]
         ).to_file(
             os.path.join(
                 path, folder, "shapes", f"express_bus_stops_nyc_{monthYear.lower()}.shp"
             )
+        )
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=express_stop_shapes,
+            feature_name=f"express_bus_stops_nyc_{monthYear.lower()}.shp",
         )
         print(f"Created stop shapefiles for local and express bus stops")
 
@@ -490,7 +540,7 @@ def make_bus_routes_shapefiles(path, folder):
 
             line_segments = create_line_segments(bus_route_shapes)
 
-            # merge trips and routes to line segmments
+            # merge trips and routes to line segments
             gdf = line_segments.merge(trips, on="shape_id", how="left")
 
             gdf = gdf.merge(
@@ -526,7 +576,7 @@ def make_bus_routes_shapefiles(path, folder):
             pd.concat(express_services, sort=False),
             columns=[
                 "route_id",
-#                 "dir_id",
+                #                 "dir_id",
                 "route_dir",
                 "geometry",
                 "route_short",
@@ -540,7 +590,7 @@ def make_bus_routes_shapefiles(path, folder):
             pd.concat(local_services, sort=False),
             columns=[
                 "route_id",
-#                 "dir_id",
+                #                 "dir_id",
                 "route_dir",
                 "geometry",
                 "route_short",
@@ -559,12 +609,30 @@ def make_bus_routes_shapefiles(path, folder):
 
         # save GeoDataframes to shapefiles
         local_route_gdf.to_file(
-            os.path.join(path, folder, "shapes", f"bus_routes_nyc_{monthYear.lower()}.shp")
+            os.path.join(
+                path, folder, "shapes", f"bus_routes_nyc_{monthYear.lower()}.shp"
+            )
+        )
+
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=local_route_gdf,
+            feature_name=f"bus_routes_nyc_{monthYear.lower()}.shp",
         )
         express_route_gdf.to_file(
             os.path.join(
-                path, folder, "shapes", f"express_bus_routes_nyc_{monthYear.lower()}.shp"
+                path,
+                folder,
+                "shapes",
+                f"express_bus_routes_nyc_{monthYear.lower()}.shp",
             )
+        )
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=express_route_gdf,
+            feature_name=f"express_bus_routes_nyc_{monthYear.lower()}.shp",
         )
         print(f"Created line shapefiles for local and express bus routes")
 
@@ -653,8 +721,17 @@ def make_subway_entrances_shapefiles(path, folder):
         entrances_shapes["ada"] = entrances_shapes["ada"].astype(str)
         entrances_shapes["free_cross"] = entrances_shapes["free_cross"].astype(str)
         entrances_shapes.to_file(
-            os.path.join(path, folder, "shapes", f"subway_entrances_{monthYear.lower()}.shp")
+            os.path.join(
+                path, folder, "shapes", f"subway_entrances_{monthYear.lower()}.shp"
+            )
         )  # write geodataframe to shapefile
+
+        write_feature_report(
+            path=path,
+            folder=folder,
+            feature=entrances_shapes,
+            feature_name=f"subway_entrances_{monthYear.lower()}.shp",
+        )
         print(f"Created subway entrances shapefiles")
 
     except Exception as e:
