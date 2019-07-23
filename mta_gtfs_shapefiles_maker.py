@@ -70,11 +70,21 @@ d = {
     "J": "JZ",
     "M": "BDFM",
     "L": "L",
-    "N": "NQR",
-    "Q": "NQR",
-    "R": "NQR",
+    "N": "NQRW",
+    "Q": "NQRW",
+    "R": "NQRW",
     "SI": "SIR",
+    "W": "NQRW",
 }
+
+# list of old and non-passanger stations
+# Stations S10 and S12 on the SIR no longer exist, they were demolished. 
+# Station 140 South Ferry Loop is a non-passenger station, 
+# it’s a couple of old platforms where the 1 train turns around to go back up. 
+# H19 Broad Channel is an extra test track where trains are kept for maintenance 
+# (the actual station is H04 Broad Channel)
+non_existent_stops=['140', 'H19', 'S10', 'S12']
+
 
 # create a dataframe from group dictionary
 route_groups = pd.DataFrame(
@@ -291,6 +301,8 @@ def make_rail_stops_shapefiles(path, folder, rail):
                 .drop_duplicates(["stop_lat", "stop_lon"], keep="first")
                 .merge(df, on=["stop_lat", "stop_lon"], how="left")
             )
+            stops=stops.loc[~stops['stop_id'].isin(non_existent_stops), :]
+            
         elif rail == "metro_north":
             # these are stops where shuttle bus make stops
             metro_north_bus_stops = stops.loc[
