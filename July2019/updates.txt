@@ -4,6 +4,6 @@ Brooklyn - Updated June 28, 2019
 Manhattan - Updated June 28, 2019
 Queens - Updated June 28, 2019
 Staten Island - Updated June 28, 2019
-Long Island Rail Road - Updated July 19, 2019 GTFS data in JSON format Schedule version only - JSON format GTFS data in XML format Schedule version only - XML format
-Metro-North Railroad - Updated July 23, 2019
+Long Island Rail Road - Updated July 30, 2019 GTFS data in JSON format Schedule version only - JSON format GTFS data in XML format Schedule version only - XML format
+Metro-North Railroad - Updated July 30, 2019
 Bus Company--- Updated June 27, 2019

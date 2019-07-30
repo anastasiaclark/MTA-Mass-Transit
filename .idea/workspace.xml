@@ -2,7 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9984ef64-8d9b-4a03-804d-56f5f4a04463" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/bus_routes_nyc_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/bus_routes_nyc_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/bus_stops_nyc_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/bus_stops_nyc_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/express_bus_routes_nyc_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/express_bus_routes_nyc_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/express_bus_stops_nyc_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/express_bus_stops_nyc_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/metro_north_bx_bus_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/metro_north_bx_bus_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/routes_LIRR_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/routes_LIRR_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/routes_LIRR_july2019.shp" afterPath="$PROJECT_DIR$/July2019/shapes/routes_LIRR_july2019.shp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/routes_LIRR_july2019.shx" afterPath="$PROJECT_DIR$/July2019/shapes/routes_LIRR_july2019.shx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/routes_metro_north_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/routes_metro_north_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/routes_nyc_subway_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/routes_nyc_subway_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/stops_LIRR_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/stops_LIRR_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/stops_LIRR_july2019.shp" afterPath="$PROJECT_DIR$/July2019/shapes/stops_LIRR_july2019.shp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/stops_metro_north_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/stops_metro_north_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/stops_nyc_subway_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/stops_nyc_subway_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/shapes/subway_entrances_july2019.dbf" afterPath="$PROJECT_DIR$/July2019/shapes/subway_entrances_july2019.dbf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/feature_report.txt" afterPath="$PROJECT_DIR$/July2019/feature_report.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/July2019/updates.txt" afterPath="$PROJECT_DIR$/July2019/updates.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.ipynb" afterPath="$PROJECT_DIR$/main.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mta_gtfs_shapefiles_maker.py" afterPath="$PROJECT_DIR$/mta_gtfs_shapefiles_maker.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,12 +31,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="mta_gtfs_shapefiles_maker.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mta_gtfs_shapefiles_maker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+            <state relative-caret-position="135">
+              <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.ipynb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="14" />
             </state>
           </provider>
         </entry>
@@ -33,6 +70,9 @@
     </option>
   </component>
   <component name="FindInProjectRecents">
+    <findStrings>
+      <find>rail_lines</find>
+    </findStrings>
     <replaceStrings>
       <replace />
     </replaceStrings>
@@ -49,10 +89,10 @@
         <option value="$PROJECT_DIR$/bus_stops.ipynb" />
         <option value="$PROJECT_DIR$/rail_stops.ipynb" />
         <option value="$PROJECT_DIR$/rail_lines.ipynb" />
-        <option value="$PROJECT_DIR$/main.ipynb" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/mta_gtfs_shapefiles_maker.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/mta_gtfs_shapefiles_maker.py" />
+        <option value="$PROJECT_DIR$/main.ipynb" />
       </list>
     </option>
   </component>
@@ -96,6 +136,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -103,11 +144,21 @@
               <item name="MTA-Mass-Transit" type="b2602c69:ProjectViewProjectNode" />
               <item name="MTA-Mass-Transit" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="MTA-Mass-Transit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MTA-Mass-Transit" type="462c0819:PsiDirectoryNode" />
+              <item name="July2019" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MTA-Mass-Transit" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MTA-Mass-Transit" type="462c0819:PsiDirectoryNode" />
+              <item name="July2019" type="462c0819:PsiDirectoryNode" />
+              <item name="shapes" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -253,15 +304,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33261803" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33690986" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44498187" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13930348" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24892704" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32921028" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -282,6 +334,14 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -349,13 +409,6 @@
     <entry file="file://$PROJECT_DIR$/rail_lines.ipynb" />
     <entry file="file://$PROJECT_DIR$/mta_gtfs_shape_maker/get_mta_gtfs_data.py" />
     <entry file="file://$PROJECT_DIR$/mta_gtfs_shape_maker/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/main.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -370,25 +423,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mta_gtfs_shapefiles_maker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="100" column="29" lean-forward="false" selection-start-line="100" selection-start-column="29" selection-end-line="100" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mta_gtfs_shapefiles_maker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="14" />
         </state>
       </provider>
     </entry>

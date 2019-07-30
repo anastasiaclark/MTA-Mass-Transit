@@ -406,6 +406,8 @@ def make_rail_routes_shapefiles(path, folder, rail):
         lines = line_segments.dissolve(by="route_id", as_index=False)
 
         rail_lines = lines.merge(routes, on="route_id")
+        # reinitialize CRS
+        rail_lines.crs=from_epsg(4269)
 
         if rail == "nyc_subway":
             rail_lines = rail_lines.merge(
@@ -566,6 +568,9 @@ def make_bus_routes_shapefiles(path, folder):
 
             # dissolves on route_dir to get single line per route
             route_gdf = gdf.dissolve(by="route_dir", as_index=False)
+
+            # reinitialize CRS
+            route_gdf.crs=from_epsg(4269)
 
             # make hex number for colors
             route_gdf["color"] = "#" + route_gdf["color"].astype(str)
