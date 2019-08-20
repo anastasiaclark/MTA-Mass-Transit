@@ -192,7 +192,7 @@ def read_lines_tables(path, folder, service):
     return routes, shapes, trips
 
 
-def create_line_segments(df, x="lon", y="lat"):
+def create_line_segments(df, x="lon", y="lat", epsg=4269):
     """Creates a GeodataFrame of line segments from the 
         shapes dataframe (CRS is NAD83)
         
@@ -200,12 +200,13 @@ def create_line_segments(df, x="lon", y="lat"):
             df (DataFrame): pandas DataFrame 
             x, y (str, optional) Default values x="lon", y="lat", 
             column names for x and y coordinates
+            epsg (int): Default value epsg=4269; EPSG value for x,y coordinate system
         Returns: 
-            gdf: (GeoDataFrame) Line GeoDataFrame in NAD83 Coordinate System 
+            gdf: (GeoDataFrame) Line GeoDataFrame in passed Coordinate System 
     """
 
     if df[x].isna().sum() > 0 or df[y].isna().sum() > 0:
-        raise "DataFrame contains Null coordinates"
+        raise f"DataFrame contains Null coordinates; consider removing rows with Null {x,y} values"
 
     points = [Point(xy) for xy in zip(df[x], df[y])]
     gdf = gpd.GeoDataFrame(df.copy(), geometry=points)
@@ -215,11 +216,11 @@ def create_line_segments(df, x="lon", y="lat"):
         .reset_index()
     )
 
-    gdf_out = gpd.GeoDataFrame(line_segments, geometry="geometry", crs=from_epsg(4269))
+    gdf_out = gpd.GeoDataFrame(line_segments, geometry="geometry", crs=from_epsg(epsg))
     return gdf_out
 
 
-def create_point_shapes(df, x="stop_lon", y="stop_lat"):
+def create_point_shapes(df, x="stop_lon", y="stop_lat", epsg=4269):
     """ Create a point GeodataFrame from DataFrame with x,y coordinates
         in NAD83 coordinate system
         
@@ -227,14 +228,16 @@ def create_point_shapes(df, x="stop_lon", y="stop_lat"):
             df (DataFrame): pandas DataFrame 
             x, y (str, optional) Default values x="stop_lon", y="stop_lat", 
             column names for x and y coordinates
+            epsg (int): Default value epsg=4269; EPSG value for x,y coordinate system
         Returns: 
             gdf: (GeoDataFrame) Point GeoDataFrame in NAD83 Coordinate System
     """
     if df[x].isna().sum() > 0 or df[y].isna().sum() > 0:
-        raise Exception("DataFrame contains Null coordinates")
+        raise Exception(f'''DataFrame contains Null coordinates; 
+                        consider removing rows with Null {x,y} values''')
 
     points = [Point(xy) for xy in zip(df[x], df[y])]
-    gdf = gpd.GeoDataFrame(df, geometry=points, crs=from_epsg(4269))
+    gdf = gpd.GeoDataFrame(df, geometry=points, crs=from_epsg(epsg))
     return gdf
 
 
@@ -406,6 +409,8 @@ def make_rail_routes_shapefiles(path, folder, rail):
         lines = line_segments.dissolve(by="route_id", as_index=False)
 
         rail_lines = lines.merge(routes, on="route_id")
+        # reinitialize CRS
+        rail_lines.crs=from_epsg(4269)
 
         if rail == "nyc_subway":
             rail_lines = rail_lines.merge(
@@ -566,6 +571,9 @@ def make_bus_routes_shapefiles(path, folder):
 
             # dissolves on route_dir to get single line per route
             route_gdf = gdf.dissolve(by="route_dir", as_index=False)
+
+            # reinitialize CRS
+            route_gdf.crs=from_epsg(4269)
 
             # make hex number for colors
             route_gdf["color"] = "#" + route_gdf["color"].astype(str)
