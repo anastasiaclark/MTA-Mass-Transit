@@ -3,4 +3,6 @@
 **stop_times.txt
 development/
 .idea/
-
+.ipynb_checkpoints/
+__pycache__
+.vscode/
