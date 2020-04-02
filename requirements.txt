@@ -9,9 +9,9 @@ beautifulsoup4=4.8.0=py37_0
 blas=1.0=mkl
 bleach=3.1.0=py37_0
 bzip2=1.0.8=h7b6447c_0
-ca-certificates=2019.8.28=0
+ca-certificates=2020.1.1=0
 cairo=1.14.12=h8948797_3
-certifi=2019.9.11=py37_0
+certifi=2019.11.28=py37_1
 cffi=1.12.3=py37h2e261b9_0
 chardet=3.0.4=py37_1003
 click=7.0=py37_0
@@ -80,7 +80,8 @@ libtiff=4.0.10=h2733197_2
 libuuid=1.0.3=h1bed415_2
 libxcb=1.13=h1bed415_1
 libxml2=2.9.9=hea5a465_1
-lxml=4.4.1=pypi_0
+libxslt=1.1.33=h7d1a2b0_0
+lxml=4.5.0=py37hefd8a0e_0
 mapclassify=2.0.1=py_0
 markupsafe=1.1.1=py37h7b6447c_0
 matplotlib=3.1.1=py37h5429711_0
@@ -97,7 +98,7 @@ notebook=6.0.1=py37_0
 numpy=1.17.2=py37haad9e8e_0
 numpy-base=1.17.2=py37hde5b4d6_0
 openjpeg=2.3.0=h05c96fa_1
-openssl=1.1.1d=h7b6447c_2
+openssl=1.1.1=h7b6447c_0
 pandas=0.25.1=py37he6710b0_0
 pandoc=2.2.3.2=0
 pandocfilters=1.4.2=py37_1

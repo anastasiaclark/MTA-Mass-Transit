@@ -21,4 +21,9 @@ These scripts were originally written to create the [NYC Mass Transit Layers ser
 
 1. Clone the repo
 2. Install required libraries, `conda create --name <env> --file requirements.txt`
-3. open and run eiter main.py or main.ipynb to download the data and create shapefiels
+3. Run `python main.py` or open `jupyter notebook` then open main.ipynb to download the data and create the shapefiles
+
+
+# How to backup env
+
+`conda list --export > requirements.txt`
