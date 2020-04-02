@@ -1,0 +1,35 @@
+agency_id,route_id,route_short_name,route_long_name,route_type,route_desc,route_color,route_text_color
+MTA NYCT,Q1,Q1,Queens Village / Bellerose - Jamaica,3,via Springfield Blvd / Braddock Av / Hillside Av,FAA61A,FFFFFF
+MTA NYCT,Q12,Q12,Little Neck - Flushing,3,via Sanford Av / Northern Blvd,EE352E,FFFFFF
+MTA NYCT,Q13,Q13,Fort Totten - Flushing,3,via Northern Blvd / Bell Blvd,EE352E,FFFFFF
+MTA NYCT,Q15,Q15,Flushing - Beechhurst,3,via 150th St / 154th St,FAA61A,FFFFFF
+MTA NYCT,Q15A,Q15A,Flushing - Beechhurst / Whitestone,3,via 150th St / Whitestone,FAA61A,FFFFFF
+MTA NYCT,Q16,Q16,Fort Totten - Flushing,3,via Bayside Av,EE352E,FFFFFF
+MTA NYCT,Q17,Q17,Flushing - Jamaica,3,via Kissena Blvd / Horace Harding Expwy / 188th St,EE352E,FFFFFF
+MTA NYCT,Q2,Q2,Queens Village - Jamaica,3,via Hollis Av / Belmont Park,6CBE45,FFFFFF
+MTA NYCT,Q20A,Q20A,College Point - Jamaica,3,via 20 Av / Main St,006CB7,FFFFFF
+MTA NYCT,Q20B,Q20B,College Point - Jamaica,3,via 14 Av / Main St,006CB7,FFFFFF
+MTA NYCT,Q26,Q26,Fresh Meadows - Flushing (Part-time),3,via Hollis Court Blvd / 46th Av,6CBE45,FFFFFF
+MTA NYCT,Q27,Q27,Cambria Heights - Flushing,3,via Springfield Blvd / Rocky Hill Rd / 46th Av,EE352E,FFFFFF
+MTA NYCT,Q28,Q28,Bayside - Flushing,3,via Northern Blvd / 32nd Av,EE352E,FFFFFF
+MTA NYCT,Q3,Q3,Jamaica - JFK Airport,3,via Farmers Blvd / Hillside Av,00AEEF,FFFFFF
+MTA NYCT,Q30,Q30,Little Neck or Queensborough Community College - Jamaica,3,via Horace Harding Expwy / Utopia Pkwy,FAA61A,FFFFFF
+MTA NYCT,Q31,Q31,Bayside - Jamaica,3,via Bell Blvd / Utopia Pkwy,FAA61A,FFFFFF
+MTA NYCT,Q32,Q32,Jackson Heights - Penn Station,3,via Roosevelt Av / Fifth Av / Madison Av,00AEEF,FFFFFF
+MTA NYCT,Q36,Q36,Floral Park or Little Neck - Jamaica,3,via Jamaica Av / Hillside Av,FAA61A,FFFFFF
+MTA NYCT,Q4,Q4,Cambria Heights - Jamaica,3,via Linden Blvd / Merrick Blvd,EE352E,FFFFFF
+MTA NYCT,Q42,Q42,Addeslieigh Park - Jamaica,3,via 174 St / Liberty Av,00AEEF,FFFFFF
+MTA NYCT,Q43,Q43,Floral Park - Jamaica,3,via Hillside Av,EE352E,FFFFFF
+MTA NYCT,Q44+,Q44-SBS,Bronx Zoo - Jamaica,3,Select Bus Service via Main St / Cross Bronx Svc Rd (Q20 Limited),EE352E,FFFFFF
+MTA NYCT,Q46,Q46,Glen Oaks - Kew Gardens,3,via Union Turnpike,EE352E,FFFFFF
+MTA NYCT,Q48,Q48,Flushing - LaGuardia Airport,3,via Roosevelt Av / 108th St / Ditmars Blvd,006CB7,FFFFFF
+MTA NYCT,Q5,Q5,Rosedale - Jamaica,3,via Merrick Blvd / Green Acres Shop Mall,EE352E,FFFFFF
+MTA NYCT,Q76,Q76,College Point - Jamaica,3,via Francis Lewis Blvd / Hillside Av,6CBE45,FFFFFF
+MTA NYCT,Q77,Q77,Laurelton - Jamaica,3,via Springfield / Francis Lewis / Hillside Av,FAA61A,FFFFFF
+MTA NYCT,Q83,Q83,Cambria Heights - Jamaica,3,via Murdock Av / Liberty Av (Local and Limited-stop Service) Av,6CBE45,FFFFFF
+MTA NYCT,Q84,Q84,Laurelton - Jamaica,3,via Merrick Blvd / 120th Av,B933AD,FFFFFF
+MTA NYCT,Q85,Q85,Rosedale - Jamaica,3,via Merrick Blvd / Conduit Av,EE352E,FFFFFF
+MTA NYCT,Q88,Q88,Elmhurst - Queens Village,3,via Horace Harding Expwy / 73rd Av / Springfield Blvd,FAA61A,FFFFFF
+MTA NYCT,X63,X63,Rosedale - Midtown Manhattan Express,3,via Merrick Bl / Francis Lewis Bl,00933C,FFFFFF
+MTA NYCT,X64,X64,Cambria Heights - Midtown Manhattan Express,3,via Linden Bl / Farmers Bl / Liberty Av,00933C,FFFFFF
+MTA NYCT,X68,X68,Floral Park - Midtown Manhattan Express,3,via Hillside Av / Queens Bl,00933C,FFFFFF

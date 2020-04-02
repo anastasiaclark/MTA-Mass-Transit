@@ -1,0 +1,59 @@
+agency_id,route_id,route_short_name,route_long_name,route_type,route_desc,route_color,route_text_color
+MTA NYCT,S40,S40,St. George - Goethals Rd North,3,via Richmond Terrace,B933AD,FFFFFF
+MTA NYCT,S42,S42,St. George - Clyde Place,3,via St Marks Pl / Jersey St,00AEEF,FFFFFF
+MTA NYCT,S44,S44,St. George - Staten Island Mall,3,via Richmond Av,FAA61A,FFFFFF
+MTA NYCT,S46,S46,St. George - West Shore Plaza,3,via Castleton Av,006CB7,FFFFFF
+MTA NYCT,S48,S48,St. George - Mariners Harbor,3,via Forest Av,EE352E,FFFFFF
+MTA NYCT,S51,S51,St. George - West Shore Plaza,3,via Bay St / Father Capodanno Blvd,006CB7,FFFFFF
+MTA NYCT,S52,S52,St. George - Staten Island Univ. Hospital,3,via Tompkins Av / Cebra Av / Jersey St,B933AD,FFFFFF
+MTA NYCT,S53,S53,Port Richmond - Bay Ridge,3,via Verrazano-Narrows Bridge / Clove Rd,EE352E,FFFFFF
+MTA NYCT,S54,S54,West New Brighton - Eltingville,3,via Manor Rd,FAA61A,FFFFFF
+MTA NYCT,S55,S55,Rossville - Staten Island Mall,3,via Bloomingdale Rd / Annadale Rd / Richmond Av,FAA61A,FFFFFF
+MTA NYCT,S56,S56,Huguenot - Staten Island Mall,3,via Richmond Av / Arthur Kill Rd / Foster Rd,6CBE45,FFFFFF
+MTA NYCT,S57,S57,Port Richmond - New Dorp,3,via Rockland Av / Brielle Av / Bradley Av,6CBE45,FFFFFF
+MTA NYCT,S59,S59,Port Richmond - Tottenville,3,via Richmond Av,EE352E,FFFFFF
+MTA NYCT,S61,S61,St. George - Staten Island Mall,3,via Victory Blvd / Bradley Av,EE352E,FFFFFF
+MTA NYCT,S62,S62,St. George - Travis,3,via Victory Blvd,B933AD,FFFFFF
+MTA NYCT,S66,S66,St. George - Port Richmond,3,via Victory Blvd / Jewett Av,6CBE45,FFFFFF
+MTA NYCT,S74,S74,St. George - Bricktown Mall,3,via Richmond Rd / Arthur Kill Rd,EE352E,FFFFFF
+MTA NYCT,S76,S76,St. George - Oakwood,3,via Richmond Rd / New Dorp Ln,B933AD,FFFFFF
+MTA NYCT,S78,S78,St. George - Bricktown Mall,3,via Hylan Blvd,FAA61A,FFFFFF
+MTA NYCT,S79+,S79-SBS,Staten Island Mall - Bay Ridge,3,Select Bus Service via Verrazano-Narrows Bridge / Hylan Blvd,006CB7,FFFFFF
+MTA NYCT,S81,S81,St. George - Grant City LTD,3,via Bay St / Father Capodanno Blvd (S51 Limited),006CB7,FFFFFF
+MTA NYCT,S84,S84,St. George - Bricktown Mall LTD,3,via Richmond Rd / Arthur Kill Rd (S74 Limited),EE352E,FFFFFF
+MTA NYCT,S86,S86,St. George - Oakwood LTD,3,via Richmond Rd / New Dorp Ln (S76 Limited),B933AD,FFFFFF
+MTA NYCT,S89,S89,Eltingville - Bayonne LTD,3,via Richmond Av (S59 Limited),EE352E,FFFFFF
+MTA NYCT,S90,S90,St. George - Goethals Rd North LTD,3,via Richmond Terrace (S40 Limited),B933AD,FFFFFF
+MTA NYCT,S91,S91,St. George - Staten Island Mall LTD,3,via Victory Blvd / Bradley Av (S61 Limited),EE352E,FFFFFF
+MTA NYCT,S92,S92,St. George - Travis LTD,3,via Victory Blvd (S62 Limited),B933AD,FFFFFF
+MTA NYCT,S93,S93,College of Staten Island - Bay Ridge LTD,3,via Verrazano-Narrows / Victory,EE352E,FFFFFF
+MTA NYCT,S94,S94,St. George - Staten Island Mall LTD,3,via Richmond Av (S44 Limited),FAA61A,FFFFFF
+MTA NYCT,S96,S96,St. George - West Shore Plaza LTD,3,via Castleton Av (S46 Limited),006CB7,FFFFFF
+MTA NYCT,S98,S98,St. George - Mariners Harbor LTD,3,via Forest Av (S48 Limited),EE352E,FFFFFF
+MTA NYCT,SIM1,SIM1,Staten Island - Lower Manhattan Express,3,via Hylan Bl / Richmond Av,00933C,FFFFFF
+MTA NYCT,SIM10,SIM10,Eltingville - Midtown Manhattan Express,3,via Hylan Bl,00933C,FFFFFF
+MTA NYCT,SIM11,SIM11,New Dorp - Midtown Manhattan Express,3,via Hylan Bl / Madison Av / Lexington Av,00933C,FFFFFF
+MTA NYCT,SIM15,SIM15,Eltingville - Lower Manhattan Express,3,via Richmond Rd,00933C,FFFFFF
+MTA NYCT,SIM1C,SIM1C,Staten Island - Manhattan Express,3,via Hylan Bl / Richmond Av,00933C,FFFFFF
+MTA NYCT,SIM2,SIM2,Staten Island - Lower Manhattan Express,3,via Huguenot Av / Hylan Bl,00933C,FFFFFF
+MTA NYCT,SIM22,SIM22,Eltingville - Midtown Manhattan Express,3,via Arthur Kill Rd / Richmond Av,00933C,FFFFFF
+MTA NYCT,SIM25,SIM25,Tottenville - Midtown Manhattan Express,3,via Rossville Av,00933C,FFFFFF
+MTA NYCT,SIM26,SIM26,Tottenville - Midtown Manhattan Express,3,via Bloomingdale Rd,00933C,FFFFFF
+MTA NYCT,SIM3,SIM3,Staten Island - Midtown Manhattan Express,3,via Watchogue Rd,00933C,FFFFFF
+MTA NYCT,SIM30,SIM30,Sunnyside - Midtown Manhattan Express,3,via Forest Av,00933C,FFFFFF
+MTA NYCT,SIM31,SIM31,Eltingville - Midtown Manhattan Express,3,via Forest Hill Rd,00933C,FFFFFF
+MTA NYCT,SIM32,SIM32,Travis - Lower Manhattan Express,3,via N Gannon Av / Victory Bl,00933C,FFFFFF
+MTA NYCT,SIM33,SIM33,Mariners Harbor - Greenwich Village Express,3,via N Gannon Av,00933C,FFFFFF
+MTA NYCT,SIM33C,SIM33C,Mariners Harbor - Greenwich Village Express,3,via N Gannon Av,00933C,FFFFFF
+MTA NYCT,SIM34,SIM34,Mariners Harbor - Lower Manhattan Express,3,via Watchogue Rd,00933C,FFFFFF
+MTA NYCT,SIM35,SIM35,Port Richmond - Lower Manhattan Express,3,via Clove Rd,00933C,FFFFFF
+MTA NYCT,SIM3C,SIM3C,Staten Island - Manhattan Express,3,via Watchogue Rd,00933C,FFFFFF
+MTA NYCT,SIM4,SIM4,Staten Island - Lower Manhattan Express,3,via Richmond Av,00933C,FFFFFF
+MTA NYCT,SIM4C,SIM4C,Staten Island - Manhattan Express,3,via Richmond Av,00933C,FFFFFF
+MTA NYCT,SIM4X,SIM4X,Staten Island - Lower Manhattan Express,3,via Park and Ride / Church St,00933C,FFFFFF
+MTA NYCT,SIM5,SIM5,Staten Island - Lower Manhattan Express,3,via F Capodanno / Giffords La,00933C,FFFFFF
+MTA NYCT,SIM6,SIM6,Staten Island - Midtown Manhattan Express,3,via F Capodanno / Giffords La,00933C,FFFFFF
+MTA NYCT,SIM7,SIM7,Staten Island - Greenwich village Express,3,via Hylan Bl / Richmond Av,00933C,FFFFFF
+MTA NYCT,SIM8,SIM8,Staten Island - Midtown Manhattan Express,3,via Richmond Av / Woodrow Rd,00933C,FFFFFF
+MTA NYCT,SIM8X,SIM8X,Staten Island - Midtown Manhattan Express,3,via Park and Ride / 42 St,00933C,FFFFFF
+MTA NYCT,SIM9,SIM9,Eltingville - Greenwich Village Express,3,via F Capodanno Blvd,00933C,FFFFFF

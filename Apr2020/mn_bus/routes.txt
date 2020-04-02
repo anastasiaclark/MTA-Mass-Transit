@@ -1,0 +1,42 @@
+agency_id,route_id,route_short_name,route_long_name,route_type,route_desc,route_color,route_text_color
+MTA NYCT,M1,M1,Harlem - East Village,3,via 5th Av / Madison Av,EE352E,FFFFFF
+MTA NYCT,M10,M10,Harlem - Columbus Circle,3,via Central Park West / Frederick Douglass Blvd,006CB7,FFFFFF
+MTA NYCT,M101,M101,East Village - Harlem,3,via Third Av / Lexington Av / Amsterdam Av,FAA61A,FFFFFF
+MTA NYCT,M102,M102,Harlem - East Village,3,via 3rd Av / Lexington Av / Lenox Av,FAA61A,FFFFFF
+MTA NYCT,M103,M103,East Harlem - City Hall,3,via 3rd Av / Lexington Av,B933AD,FFFFFF
+MTA NYCT,M104,M104,West Harlem - Times Square,3,via Broadway / 42nd St,B933AD,FFFFFF
+MTA NYCT,M106,M106,East Harlem - West Side,3,via 96th St / E 106th St Crosstown,6CBE45,FFFFFF
+MTA NYCT,M11,M11,Riverbank Park & Harlem - West Village,3,via 9th - Columbus Av / 10th - Amsterdam Av,FAA61A,FFFFFF
+MTA NYCT,M116,M116,West Side - East Harlem,3,via 116th St Crosstown,6CBE45,FFFFFF
+MTA NYCT,M12,M12,Midtown West - West Village,3,via 11 Av,006CB7,FFFFFF
+MTA NYCT,M14A+,M14A-SBS,Lower East Side - Abingdon Sq,3,Select Bus Service via 14th St Crosstown,6CBE45,FFFFFF
+MTA NYCT,M14D+,M14D-SBS,Lower East Side - Chelsea Piers,3,Select Bus Service via 14th St Crosstown,6CBE45,FFFFFF
+MTA NYCT,M15,M15,East Harlem - South Ferry,3,via 1st Av / 2nd Av,006CB7,FFFFFF
+MTA NYCT,M15+,M15-SBS,East Harlem - South Ferry,3,Select Bus Service via 1st Av / 2nd Av,006CB7,FFFFFF
+MTA NYCT,M2,M2,Washington Heights - East Village,3,via 5th Av / Madison Av / AC Powell Blvd,B933AD,FFFFFF
+MTA NYCT,M20,M20,Lincoln Center - South Ferry,3,via 7th Av / 8th Av / Battery Park City,EE352E,FFFFFF
+MTA NYCT,M21,M21,Lower East Side - West Village LTD,3,via Houston St / Avenue C,FAA61A,FFFFFF
+MTA NYCT,M22,M22,Lower East Side - Battery Park City,3,via Madison St / Chambers St,00AEEF,FFFFFF
+MTA NYCT,M23+,M23-SBS,Chelsea Piers - East Side,3,Select Bus Service via 23rd St Crosstown,B933AD,FFFFFF
+MTA NYCT,M3,M3,Fort George - East Village,3,via 5th Av / Madison Av / St Nicholas Blvd,B933AD,FFFFFF
+MTA NYCT,M31,M31,Yorkville - Clinton,3,via 57th St / York Av,B933AD,FFFFFF
+MTA NYCT,M34+,M34-SBS,East Side - Javits Center,3,Select Bus Service via 34th St Crosstown,006CB7,FFFFFF
+MTA NYCT,M34A+,M34A-SBS,Waterside - Port Authority Terminal,3,Select Bus Service via 34th St Crosstown,006CB7,FFFFFF
+MTA NYCT,M35,M35,Ward's Island - East Harlem,3,via Randall's Island / RFK Bridge,FAA61A,FFFFFF
+MTA NYCT,M4,M4,The Cloisters - 32 St,3,via 5th Av / Madison Av / Broadway,00AEEF,FFFFFF
+MTA NYCT,M42,M42,United Nations - W 42 St Pier,3,via 42nd St Crosstown,EE352E,FFFFFF
+MTA NYCT,M5,M5,George Washington Bridge - 31 St & 6 Av,3,via 5th Av / Av of Americas / Riverside Dr,EE352E,FFFFFF
+MTA NYCT,M50,M50,W 42 St Pier - East Side,3,via 49th St / 50th St Crosstown,6CBE45,FFFFFF
+MTA NYCT,M55,M55,W 44 St  - South Ferry,3,via 5 Av & 6 Av,6CBE45,FFFFFF
+MTA NYCT,M57,M57,East Side - West Side,3,via 57th St Crosstown,00AEEF,FFFFFF
+MTA NYCT,M60+,M60-SBS,LaGuardia Airport - West Side,3,Select Bus Service via 125th St / Astoria Blvd,EE352E,FFFFFF
+MTA NYCT,M66,M66,East Side - Lincoln Center,3,via 65th & 68th St (East) / 67th & 66th St (West),FAA61A,FFFFFF
+MTA NYCT,M7,M7,Harlem - 14th Street,3,via Columbus / Amsterdam / 6 & 7 Av / Bway,00AEEF,FFFFFF
+MTA NYCT,M72,M72,East Side - West Side,3,via 72nd St Crosstown,6CBE45,FFFFFF
+MTA NYCT,M79+,M79-SBS,Yorkville - West Side,3,Select Bus Service via 79th St Crosstown,EE352E,FFFFFF
+MTA NYCT,M8,M8,West Village - East Village LTD,3,via 8 & 9 St Crosstown,00AEEF,FFFFFF
+MTA NYCT,M86+,M86-SBS,Yorkville - West Side,3,Select Bus Service via 86th St Crosstown,FAA61A,FFFFFF
+MTA NYCT,M9,M9,Battery Park City - Kips Bay,3,via Avenue C / E Broadway,B933AD,FFFFFF
+MTA NYCT,M96,M96,East Side - West Side,3,via 96th St Crosstown,6CBE45,FFFFFF
+MTA NYCT,M98,M98,Washington Heights - Upper East Side,3,via Harlem River Dr / Lexington / 3rd,EE352E,FFFFFF
+MTA NYCT,M191,M191,191 ST Shuttle Loop,3,via St Nicholas Av and Broadway,EE352E,FFFFFF

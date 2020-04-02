@@ -1,0 +1,67 @@
+agency_id,route_id,route_short_name,route_long_name,route_type,route_desc,route_color,route_text_color
+MTA NYCT,B1,B1,Bay Ridge - Manhattan Beach,3,via 86th St / Ocean Pkwy,00AEEF,FFFFFF
+MTA NYCT,B11,B11,Sunset Park - Midwood,3,via 49th & 50th St / Avenue J,006CB7,FFFFFF
+MTA NYCT,B12,B12,Lefferts Gardens - East New York,3,via Clarkson Av / Empire Blvd / East New York Av,6CBE45,FFFFFF
+MTA NYCT,B13,B13,Spring Creek - Wyckoff Hospital,3,via Crescent St / Jamaica Av / Wyckoff Av,FAA61A,FFFFFF
+MTA NYCT,B14,B14,Spring Creek - Crown Heights,3,via Sutter Av / Pitkin Av,00AEEF,FFFFFF
+MTA NYCT,B15,B15,Bedford Stuyvesant - JFK Airport,3,via Marcus Garvey Blvd / New Lots Av,B933AD,FFFFFF
+MTA NYCT,B16,B16,Bay Ridge - Lefferts Gardens,3,via Ft Hamilton Pkwy / 13th & 14th Av,FAA61A,FFFFFF
+MTA NYCT,B17,B17,Canarsie - Crown Heights,3,via Remsen Av / Seaview Av,B933AD,FFFFFF
+MTA NYCT,B2,B2,Kings Hwy Station - Kings Plaza,3,via Avenue R / Avenue S,006CB7,FFFFFF
+MTA NYCT,B20,B20,Ridgewood - Spring Creek,3,via Pennsylvania Av / Decatur St,6CBE45,FFFFFF
+MTA NYCT,B24,B24,Williamsburg - Greenpoint,3,via Greenpoint Av & 48th St / Meeker Av,FAA61A,FFFFFF
+MTA NYCT,B25,B25,Dwntn Bklyn & DUMBO - Broadway Junction,3,via Fulton St,6CBE45,FFFFFF
+MTA NYCT,B26,B26,Downtown Brooklyn - Ridgewood,3,via Halsey St / Fulton St,006CB7,FFFFFF
+MTA NYCT,B3,B3,Bensonhurst - Bergen Beach,3,via Avenue U,EE352E,FFFFFF
+MTA NYCT,B31,B31,Gerritsen Beach - Kings Hwy Station,3,via Gerritsen Av / Avenue R,FAA61A,FFFFFF
+MTA NYCT,B32,B32,Williamsburg - Long Island City,3,via Kent Av / Wythe Av,006CB7,FFFFFF
+MTA NYCT,B35,B35,Brownsville - Sunset Park,3,via Church Av / 39th St,EE352E,FFFFFF
+MTA NYCT,B36,B36,Sheepshead Bay - Coney Island,3,via Avenue Z / Surf Av,FAA61A,FFFFFF
+MTA NYCT,B37,B37,Downtown Brooklyn - Bay Ridge,3,via 3rd Av / 39th St,B933AD,FFFFFF
+MTA NYCT,B38,B38,Ridgewood - Downtown Brooklyn,3,via DeKalb & Lafayette Av,00AEEF,FFFFFF
+MTA NYCT,B39,B39,Williamsburg Bridge Plaza - Lower East Side,3,via Williamsburg Bridge / Delancey St,00AEEF,FFFFFF
+MTA NYCT,B4,B4,Bay Ridge - Sheepshead Bay,3,via Bay Ridge Pkwy / 86th St / Avenue Z,6CBE45,FFFFFF
+MTA NYCT,B41,B41,Kings Plaza - Downtown Brooklyn,3,via Flatbush Av / Livingston St,006CB7,FFFFFF
+MTA NYCT,B42,B42,Canarsie Pier - Rockaway Parkway Station,3,via Rockaway Pkwy,006CB7,FFFFFF
+MTA NYCT,B43,B43,Greenpoint - Lefferts Gardens,3,via Manhattan Av / Graham Av / Tompkins Av,EE352E,FFFFFF
+MTA NYCT,B44,B44,Sheepshead Bay - Williamsburg,3,via Nostrand Av,B933AD,FFFFFF
+MTA NYCT,B44+,B44-SBS,Sheepshead Bay - Williamsburg,3,Select Bus Service via Nostrand Av,B933AD,FFFFFF
+MTA NYCT,B45,B45,Downtown Brooklyn - Crown Heights,3,via St Johns Place,EE352E,FFFFFF
+MTA NYCT,B46,B46,Kings Plaza - Williamsburg,3,via Utica Av - Malcolm X Blvd,6CBE45,FFFFFF
+MTA NYCT,B46+,B46-SBS,Kings Plaza - Williamsburg,3,Select Bus Service via Utica Av - Malcolm X Blvd,6CBE45,FFFFFF
+MTA NYCT,B47,B47,Kings Plaza - Bedford-Stuyvesant,3,via Broadway / Ralph Av / Avenue U,FAA61A,FFFFFF
+MTA NYCT,B48,B48,Lefferts Gardens - Greenpoint,3,via Lorimer St / Franklin & Classon Av,6CBE45,FFFFFF
+MTA NYCT,B49,B49,Manhattan Beach - Bedford-Stuyvesant,3,via Ocean Av / Bedford & Rogers Av,EE352E,FFFFFF
+MTA NYCT,B52,B52,Downtown Brooklyn - Ridgewood,3,via Gates Av,EE352E,FFFFFF
+MTA NYCT,B54,B54,Downtown Brooklyn - Ridgewood,3,via Myrtle Av,6CBE45,FFFFFF
+MTA NYCT,B57,B57,Gowanus - Maspeth,3,via Flushing Av,EE352E,FFFFFF
+MTA NYCT,B6,B6,Bath Beach - East New York,3,via Bay Pkwy / Avenue J / Flatlands Av,EE352E,FFFFFF
+MTA NYCT,B60,B60,Williamsburg - Canarsie,3,via Wilson Av / Rockaway Av,B933AD,FFFFFF
+MTA NYCT,B61,B61,Park Slope - Downtown Brooklyn,3,via Van Brunt St / Columbia St / 9th St,6CBE45,FFFFFF
+MTA NYCT,B62,B62,Downtown Brooklyn - Long Island City,3,via Bklyn Navy Yard / Manhattan Av / Jackson Av,00AEEF,FFFFFF
+MTA NYCT,B63,B63,Bay Ridge - Cobble Hill,3,via 5th Av / Atlantic Av,006CB7,FFFFFF
+MTA NYCT,B64,B64,Bay Ridge - Coney Island,3,via Bay Ridge Av / Bath Av,6CBE45,FFFFFF
+MTA NYCT,B65,B65,Downtown Brooklyn - Crown Heights,3,via Bergen St & Dean St,00AEEF,FFFFFF
+MTA NYCT,B67,B67,Brooklyn Navy Yard - Kensington,3,via Flatbush Av / 7th Av / McDonald Av,EE352E,FFFFFF
+MTA NYCT,B68,B68,Coney Island - Windsor Terrace,3,via Coney Island Av / Brighton Beach Av,EE352E,FFFFFF
+MTA NYCT,B69,B69,Downtown Brooklyn - Kensington,3,via Vanderbilt Av / 7th Av / McDonald Av,006CB7,FFFFFF
+MTA NYCT,B7,B7,Midwood - Bedford-Stuyvesant,3,via Kings Hwy / Saratoga Av,EE352E,FFFFFF
+MTA NYCT,B70,B70,Dyker Heights - Sunset Park,3,via 92nd St / 3rd Av / 8th Av,B933AD,FFFFFF
+MTA NYCT,B74,B74,Sea Gate - Stillwell Av,3,via Mermaid Av,EE352E,FFFFFF
+MTA NYCT,B8,B8,Dyker Heights - East Flatbush,3,via 18th Av / Foster Av / Avenue D,FAA61A,FFFFFF
+MTA NYCT,B82,B82,Coney Island - Spring Creek Towers,3,via Bay Pkwy / Kings Hwy / Flatlands Av,6CBE45,FFFFFF
+MTA NYCT,B82+,B82-SBS,Coney Island -spring Creek Towers,3,select Bus service via Bay Pkwy / Kings Hwy / Flatlands Av,6CBE45,FFFFFF
+MTA NYCT,B83,B83,Spring Creek - Broadway Junction,3,via Van Siclen Av / Pennsylvania Av,EE352E,FFFFFF
+MTA NYCT,B84,B84,Spring Creek-New Lots,3,via Ashford Street/Flatlands Avenue,006CB7,FFFFFF
+MTA NYCT,B9,B9,Bay Ridge - Kings Plaza,3,via 60th St / Avenue M,EE352E,FFFFFF
+MTA NYCT,Q24,Q24,Broadway Junction - Jamaica,3,via Atlantic Av,00AEEF,FFFFFF
+MTA NYCT,Q54,Q54,Williamsburg - Jamaica,3,via Jamaica Av / Metropolitan Av,B933AD,FFFFFF
+MTA NYCT,Q55,Q55,Ridgewood - Richmond Hill,3,via Myrtle Av,EE352E,FFFFFF
+MTA NYCT,Q56,Q56,Broadway Junction - Jamaica,3,via Jamaica Av,B933AD,FFFFFF
+MTA NYCT,Q58,Q58,Ridgewood - Flushing,3,via Fresh Pond Rd / Corona Av / College Pt Blvd,6CBE45,FFFFFF
+MTA NYCT,Q59,Q59,Williamsburg - Rego Park,3,via Grand St / Grand Av / Queens Blvd,FAA61A,FFFFFF
+MTA NYCT,X27,X27,Bay Ridge - Manhattan Express,3,via Shore Rd,00933C,FFFFFF
+MTA NYCT,X28,X28,Sea Gate / Bensonhurst - Manhattan Express,3,via Surf Av / Cropsey Av,00933C,FFFFFF
+MTA NYCT,X37,X37,Bay Ridge - Midtown Manhattan Express,3,via Shore Rd,00933C,FFFFFF
+MTA NYCT,X38,X38,Sea Gate / Bensonhurst - Midtown Manhattan Express,3,via Surf Av / Cropsey Av,00933C,FFFFFF
+MTA NYCT,F1,F1,CULVER LINK F Shuttle Bus-Church Avenue and McDonald Avenue,3,via McDonald Avenue and Surf Avenue and Stillwell Avenue,EE352E,FFFFFF
