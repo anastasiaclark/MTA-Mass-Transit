@@ -1,9 +1,0 @@
-New York City Transit Subway - Updated January 09, 2018
-Bronx - Updated March 26, 2018
-Brooklyn - Updated March 26, 2018
-Manhattan - Updated March 26, 2018
-Queens - Updated March 26, 2018
-Staten Island - Updated March 26, 2018
-Long Island Rail Road - Updated May 17, 2018 GTFS data in JSON format Schedule version only - JSON format GTFS data in XML format Schedule version only - XML format
-Metro-North Railroad - Updated April 19, 2018
-Bus Company--- Updated March 14, 2018
