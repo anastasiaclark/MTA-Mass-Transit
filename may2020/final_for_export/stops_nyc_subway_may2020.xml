@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="http://faculty.baruch.cuny.edu/geoportal/metadata/bcgis_dcxml.css"?>
+<metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://faculty.baruch.cuny.edu/geoportal/metadata/bcgis_dc_schema.xsd">
+<title>Subway Stops, New York NY, May 2020</title>
+<creator>Frank Donnelly</creator>
+<creator>Anastasia Clark</creator>
+<subject>structure</subject>
+<subject>transportation</subject>
+<description>This point layer represents subway station stops for the New York City Subway and the Staten Island Railway, managed by MTA New York City Transit. Each point represents a stop location, which is the center of a set of platforms designated to serve specific trains within a subway station. This layer was enhanced by adding a trains field, which lists trains that stop at the station during normal, weekday rush hour service. A structure field indicates whether the station is above or below ground using a number of different categories. The unique ID for the features is stop_id, a field created by the MTA. Some stops that share the same geographic coordinates, because one set of platforms are directly beneath another, were combined into a single stop, and the ID for the second stop was recorded in a field called stop_id2. The geoid field indicates which county the stop is located in using the state-county ANSI FIPS code. This layer was created by the GIS Lab at Baruch College CUNY as part of the NYC Mass Transit Spatial Layer series, to provide access to mass transit features for basic geographic analysis and map making. The data was generated from the MTA's static data developer feeds. It was transformed and generalized from a GTFS format into readily usable GIS features using a series of python scripts. Please note: data in this May 2020 edition represents reduced, essential service due to the COVID-19 pandemic.</description>
+<publisher>Newman Library (Bernard M. Baruch College)</publisher>
+<issued>2020-05</issued>
+<type>Dataset</type>
+<format>Shapefile</format>
+<medium>Point</medium>
+<identifier>stops_nyc_subway_may2020.shp</identifier>
+<identifier>https://www.baruch.cuny.edu/confluence/display/geoportal/NYC+Mass+Transit+Spatial+Layers</identifier>
+<source>Metropolitan Transportation Authority, Static Data Feeds</source>
+<language>English</language>
+<isPartOf>NYC Mass Transit Spatial Layers</isPartOf>
+<coverage>New York City, New York, United States</coverage>
+<coverage>Bronx County, New York, United States</coverage> 
+<coverage>Kings County, New York, United States</coverage> 
+<coverage>New York County, New York, United States</coverage>
+<coverage>Queens County, New York, United States</coverage> 
+<coverage>Richmond County, New York, United States</coverage> 
+<coverage>Borough of Bronx, New York, United States</coverage> 
+<coverage>Borough of Brooklyn, New York, United States</coverage> 
+<coverage>Borough of Manhattan, New York, United States</coverage> 
+<coverage>Borough of Queens, New York, United States</coverage> 
+<coverage>Borough of Staten Island, New York, United States</coverage>
+<spatial>name=New York City, New York, United States; northlimit=272752.873521; eastlimit=1067309.746197; southlimit=120053.504637; westlimit=913090.689878; units=ft; projection=NAD83 / New York Long Island (ftUS);</spatial>
+<temporal>2020-05</temporal>
+<rights>Public</rights>
+<license>Creative Commons Attribution-NonCommercial-ShareAlike CC BY-NC-SA</license> <license>https://creativecommons.org/licenses/by-nc-sa/4.0/</license>
+<provenance>Baruch CUNY</provenance>
+<accrualperiodicity>Semiannual</accrualperiodicity>
+</metadata>

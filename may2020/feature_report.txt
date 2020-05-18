@@ -1,0 +1,12 @@
+Feature count for routes_LIRR_may2020.shp = 11
+Feature count for stops_LIRR_may2020.shp = 124
+Feature count for routes_metro_north_may2020.shp = 6
+Feature count for metro_north_bx_bus_may2020.shp = 23
+Feature count for stops_metro_north_may2020.shp = 113
+Feature count for routes_nyc_subway_may2020.shp = 24
+Feature count for stops_nyc_subway_may2020.shp = 493
+Feature count for bus_routes_nyc_may2020.shp = 478
+Feature count for express_bus_routes_nyc_may2020.shp = 104
+Feature count for bus_stops_nyc_may2020.shp = 19368
+Feature count for express_bus_stops_nyc_may2020.shp = 2906
+Feature count for subway_entrances_may2020.shp = 1866

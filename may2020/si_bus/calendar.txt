@@ -1,0 +1,10 @@
+service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date
+CA_F0-Saturday,0,0,0,0,0,1,0,20200411,20200606
+CA_F0-Sunday,0,0,0,0,0,0,1,20200405,20200531
+CA_F0-Weekday,1,1,1,1,1,0,0,20200406,20200605
+CH_F0-Saturday,0,0,0,0,0,1,0,20200411,20200606
+CH_F0-Sunday,0,0,0,0,0,0,1,20200405,20200531
+CH_F0-Weekday,1,1,1,1,1,0,0,20200406,20200605
+YU_F0-Saturday,0,0,0,0,0,1,0,20200411,20200606
+YU_F0-Sunday,0,0,0,0,0,0,1,20200405,20200531
+YU_F0-Weekday,1,1,1,1,1,0,0,20200406,20200605
