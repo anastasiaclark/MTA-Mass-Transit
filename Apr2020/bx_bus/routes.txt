@@ -1,0 +1,45 @@
+agency_id,route_id,route_short_name,route_long_name,route_type,route_desc,route_color,route_text_color
+MTA NYCT,BX1,Bx1,Riverdale - Mott Haven,3,via Grand Concourse / E 138th St,00AEEF,FFFFFF
+MTA NYCT,BX10,Bx10,Riverdale - Norwood,3,via Riverdale Av / W 231st St / Jerome Av,006CB7,FFFFFF
+MTA NYCT,BX11,Bx11,Parkchester - Southern Blvd & GW Bridge,3,via Claremont Pkwy / E 170th St,FAA61A,FFFFFF
+MTA NYCT,BX12,Bx12,Pelham Pkwy - Fordham Rd,3,via Pelham Pkwy / Fordham Rd,006CB7,FFFFFF
+MTA NYCT,BX12+,Bx12-SBS,Pelham Pkwy - Fordham Rd,3,Select Bus Service via Pelham Pkwy / Fordham Rd / Bay Plaza Shop Ctr,006CB7,FFFFFF
+MTA NYCT,BX13,Bx13,George Washington Bridge - Yankee Stadium,3,via Ogden Av / W 181st St,006CB7,FFFFFF
+MTA NYCT,BX15,Bx15,Fordham Plaza - The Hub,3,via 3rd Av / 125th St,FAA61A,FFFFFF
+MTA NYCT,BX16,Bx16,Pelham - Norwood,3,via E 233rd St / Nereid Av,00AEEF,FFFFFF
+MTA NYCT,BX17,Bx17,Fordham Plaza - Port Morris,3,via Crotona Av / Prospect Av,006CB7,FFFFFF
+MTA NYCT,BX18,Bx18,Morris Heights/High Bridge Circulator,3,via E 170 St / Grand Concourse,6CBE45,FFFFFF
+MTA NYCT,BX19,Bx19,NY Botanical Garden - Riverbank Park,3,via Southern Bl / E 149th St,B933AD,FFFFFF
+MTA NYCT,BX2,Bx2,Kingsbridge Heights - Mott Haven,3,via Grand Concourse / E 149th St,FAA61A,FFFFFF
+MTA NYCT,BX20,Bx20,Riverdale - Inwood,3,via Broadway / Henry Hudson Pkwy,00AEEF,FFFFFF
+MTA NYCT,BX21,Bx21,Westchester Sq - Mott Haven,3,via Morris Park Av / Boston Rd,6CBE45,FFFFFF
+MTA NYCT,BX22,Bx22,Bedford Park - Castle Hill,3,via Castle Hill Av,EE352E,FFFFFF
+MTA NYCT,BX24,Bx24,Country Club - Hutchinson Metro Center,3,via Country Club Loop,6CBE45,FFFFFF
+MTA NYCT,BX26,Bx26,Co-op City Section 5 - Bedford Park,3,via Allerton Av,FAA61A,FFFFFF
+MTA NYCT,BX27,Bx27,Clasons Pt - West Farms Rd & Southern Blvd,3,via Westchester Av / Soundview Av,00AEEF,FFFFFF
+MTA NYCT,BX28,Bx28,Co-op City Section 5 - Fordham Center,3,via E Gun Hill Rd / Bartow Av,00AEEF,FFFFFF
+MTA NYCT,BX29,Bx29,City Island - Pelham Bay Pk Station,3,via City Island Rd / City Island Av,00AEEF,FFFFFF
+MTA NYCT,BX3,Bx3,Riverdale - George Washington Bridge,3,via University Av / W 181st St,EE352E,FFFFFF
+MTA NYCT,BX30,Bx30,Co-op City Section 5 - Pelham Pkwy,3,via Boston Rd,EE352E,FFFFFF
+MTA NYCT,BX31,Bx31,Woodlawn - Westchester Sq,3,via Eastchester Rd,EE352E,FFFFFF
+MTA NYCT,BX32,Bx32,Kingsbridge VA Hospital - Mott Haven,3,via Morris Av / Jerome Av,6CBE45,FFFFFF
+MTA NYCT,BX33,Bx33,Port Morris - Harlem,3,via E 138th St / W 135th St,6CBE45,FFFFFF
+MTA NYCT,BX34,Bx34,Woodlawn - Fordham Center,3,via Webster Av,B933AD,FFFFFF
+MTA NYCT,BX35,Bx35,West Farms Rd & Jennings St - GW Bridge,3,via E 167th / W 181st St,00AEEF,FFFFFF
+MTA NYCT,BX36,Bx36,Soundview - George Washington Bridge,3,via E Tremont Av,B933AD,FFFFFF
+MTA NYCT,BX38,Bx38,Co-op City Bay Plaza - Norwood,3,via E Gun Hill Rd / Co-op City Blvd,FAA61A,FFFFFF
+MTA NYCT,BX39,Bx39,Wakefield - Clasons Pt,3,via White Plains Rd,FAA61A,FFFFFF
+MTA NYCT,BX4,Bx4,Westchester Sq - The Hub,3,via Westchester Av,FAA61A,FFFFFF
+MTA NYCT,BX40,Bx40,Throgs Neck - River Park Towers,3,via E Tremont Av / E 180 St,006CB7,FFFFFF
+MTA NYCT,BX41,Bx41,Williamsbridge - The Hub,3,via Webster Av / E Gun Hill Rd,EE352E,FFFFFF
+MTA NYCT,BX41+,Bx41-SBS,Williamsbridge - The Hub,3,Select Bus Service via East Gun Hill Rd/White Plains Rd,EE352E,FFFFFF
+MTA NYCT,BX42,Bx42,Throgs Neck - River Park Towers,3,via E Tremont Av / E 180 St,EE352E,FFFFFF
+MTA NYCT,BX46,Bx46,Prospect Av - Westchester Av / Hunts Point Market,3,via Barretto PK,EE352E,FFFFFF
+MTA NYCT,BX4A,Bx4A,Westchester Sq - Gladstone Sq,3,via Metropolitan Oval / Westchester Av,FAA61A,FFFFFF
+MTA NYCT,BX5,Bx5,Pelham Bay - West Farms Rd & Southern Blvd,3,via Bruckner Blvd Svc Rd / Story Av,EE352E,FFFFFF
+MTA NYCT,BX6,Bx6,Hunts Point - Riverside Dr,3,via E 161st St / E 163rd St,EE352E,FFFFFF
+MTA NYCT,BX6+,Bx6-SBS,Soundview - Riverside Dr,3,Select Bus Service via E 161st St / E 163rd St,EE352E,FFFFFF
+MTA NYCT,BX7,Bx7,Riverdale - Washington Heights,3,via Riverdale Av / Broadway,EE352E,FFFFFF
+MTA NYCT,BX8,Bx8,Williamsbridge - Locust Point,3,via Bronxwood Av / Williamsbridge Rd / Crosby Av,FAA61A,FFFFFF
+MTA NYCT,BX9,Bx9,Riverdale - West Farms Sq,3,via Broadway / Kingsbridge Rd / Southern Blvd,FAA61A,FFFFFF
+MTA NYCT,M100,M100,Inwood - Manhattanville,3,via Broadway / Amsterdam Av,00AEEF,FFFFFF
