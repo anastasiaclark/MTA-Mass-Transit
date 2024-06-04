@@ -2,7 +2,8 @@ import geopandas as gpd
 import pandas as pd
 import os
 from shapely.geometry import Point, LineString
-from fiona.crs import from_epsg
+# from fiona.crs import from_epsg
+from pyproj import CRS
 import logging
 import datetime
 
@@ -216,7 +217,7 @@ def create_line_segments(df, x="lon", y="lat", epsg=4269):
         .reset_index()
     )
 
-    gdf_out = gpd.GeoDataFrame(line_segments, geometry="geometry", crs=from_epsg(epsg))
+    gdf_out = gpd.GeoDataFrame(line_segments, geometry="geometry", crs=CRS.from_epsg(epsg))
     return gdf_out
 
 
@@ -237,7 +238,7 @@ def create_point_shapes(df, x="stop_lon", y="stop_lat", epsg=4269):
                         consider removing rows with Null {x,y} values''')
 
     points = [Point(xy) for xy in zip(df[x], df[y])]
-    gdf = gpd.GeoDataFrame(df, geometry=points, crs=from_epsg(epsg))
+    gdf = gpd.GeoDataFrame(df, geometry=points, crs=CRS.from_epsg(epsg))
     return gdf
 
 
@@ -321,11 +322,11 @@ def make_rail_stops_shapefiles(path, folder, rail):
             stops = stops.drop_duplicates(["stop_lat", "stop_lon"], keep="first")
             bus_stops_geo = create_point_shapes(metro_north_bus_stops)
             bus_stops_geo = bus_stops_geo.to_crs(
-                from_epsg(2263)
+                CRS.from_epsg(2263)
             )  # reproject to NY State Plane (ft)
             bus_stops_geo = gpd.sjoin(
-                bus_stops_geo, counties, how="inner", op="intersects"
-            ).drop("index_right", 1)
+                bus_stops_geo, counties, how="inner", predicate="intersects"
+            ).drop("index_right", axis=1)
             # save shuttle bus GeoDataframe to shapefiles
             bus_stops_geo.to_file(
                 os.path.join(
@@ -344,10 +345,10 @@ def make_rail_stops_shapefiles(path, folder, rail):
 
         stops_geo = create_point_shapes(stops)
         stops_geo = stops_geo.to_crs(
-            from_epsg(2263)
+            CRS.from_epsg(2263)
         )  # reproject to NY State Plane (ft)
-        stops_geo = gpd.sjoin(stops_geo, counties, how="inner", op="intersects").drop(
-            "index_right", 1
+        stops_geo = gpd.sjoin(stops_geo, counties, how="inner", predicate="intersects").drop(
+            "index_right", axis=1
         )
         # save GeoDataframe to shapefiles
         stops_geo.to_file(
@@ -387,30 +388,35 @@ def make_rail_routes_shapefiles(path, folder, rail):
         # create new df that doesn't contain unusual service for MTA (applies to subway only)
 
         if rail == "nyc_subway":
-            shapes = shapes[~shapes["shape_id"].isin(subway_segments_to_remove)]
+            shapes = shapes.loc[~shapes["shape_id"].isin(subway_segments_to_remove)].copy()
 
         if rail == "metro_north":
             # these shape_ids are from the generalized version of the routes
-            shapes = shapes.loc[~shapes["shape_id"].isin(["52", "51", "33", "34"])]
+            shapes = shapes.loc[~shapes["shape_id"].isin(["52", "51", "33", "34"])].copy()
 
         shapes = shapes.merge(
             trips[["route_id", "shape_id"]], on="shape_id", how="left"
         ).drop_duplicates()
+        
+        points_per_shape_id=shapes.groupby('shape_id')['shape_pt_sequence'].count()
+        not_enough_for_line=points_per_shape_id.loc[points_per_shape_id<2].index.tolist()
+        
+        good_points=shapes.loc[~shapes['shape_id'].isin(not_enough_for_line)]
 
-        line_segments = create_line_segments(shapes)
+        line_segments = create_line_segments(good_points)
 
         if rail == "nyc_subway":
             line_segments["route_id"] = line_segments["shape_id"].str.split(
                 ".", expand=True
             )[0]
         else:
-            line_segments = line_segments.merge(trips, on="shape_id").drop("dir_id", 1)
+            line_segments = line_segments.merge(trips, on="shape_id").drop("dir_id", axis=1)
 
         lines = line_segments.dissolve(by="route_id", as_index=False)
 
         rail_lines = lines.merge(routes, on="route_id")
         # reinitialize CRS
-        rail_lines.crs=from_epsg(4269)
+        rail_lines.crs=CRS.from_epsg(4269)
 
         if rail == "nyc_subway":
             rail_lines = rail_lines.merge(
@@ -422,9 +428,9 @@ def make_rail_routes_shapefiles(path, folder, rail):
             rail_lines.loc[rail_lines["route_id"] == "SI", "color"] = "053159"
             # and make route_short equal to JZ rather than J
             rail_lines.loc[rail_lines["route_id"] == "J", "route_short"] = "JZ"
-            rail_lines = rail_lines.drop("shape_id", 1)
+            rail_lines = rail_lines.drop("shape_id", axis=1)
         else:
-            rail_lines = rail_lines.drop(["shape_id", "route_short"], 1)
+            rail_lines = rail_lines.drop(["shape_id", "route_short"], axis=1)
         rail_lines["color"] = "#" + rail_lines["color"]
         rail_lines = rail_lines.to_crs(epsg=2263)  # reproject to State Plane
         # save GeoDataframe to shapefiles
@@ -475,25 +481,25 @@ def make_bus_stops_shapefiles(path, folder):
         express_stops = all_stops.loc[~local_stops_mask].copy()
 
         local_stop_shapes = create_point_shapes(local_stops)
-        local_stop_shapes = local_stop_shapes.to_crs(from_epsg(2263))
+        local_stop_shapes = local_stop_shapes.to_crs(CRS.from_epsg(2263))
 
         express_stop_shapes = create_point_shapes(express_stops)
-        express_stop_shapes = express_stop_shapes.to_crs(from_epsg(2263))
+        express_stop_shapes = express_stop_shapes.to_crs(CRS.from_epsg(2263))
 
         counties = gpd.read_file(
             os.path.join(path, "counties_bndry.geojson"), driver="GeoJSON"
         )
 
         # reproject to NY State Plane (ft)
-        counties = counties.to_crs(from_epsg(2263))
+        counties = counties.to_crs(CRS.from_epsg(2263))
 
         local_stop_shapes = gpd.sjoin(
-            local_stop_shapes, counties, how="inner", op="intersects"
-        ).drop(["route_id", "index_right"], 1)
+            local_stop_shapes, counties, how="inner", predicate="intersects"
+        ).drop(["route_id", "index_right"], axis=1)
 
         express_stop_shapes = gpd.sjoin(
-            express_stop_shapes, counties, how="inner", op="intersects"
-        ).drop(["route_id", "index_right"], 1)
+            express_stop_shapes, counties, how="inner", predicate="intersects"
+        ).drop(["route_id", "index_right"], axis=1)
 
         # save GeoDataframes to shapefiles
         local_stop_shapes.drop_duplicates(
@@ -573,7 +579,7 @@ def make_bus_routes_shapefiles(path, folder):
             route_gdf = gdf.dissolve(by="route_dir", as_index=False)
 
             # reinitialize CRS
-            route_gdf.crs=from_epsg(4269)
+            route_gdf.crs=CRS.from_epsg(4269)
 
             # make hex number for colors
             route_gdf["color"] = "#" + route_gdf["color"].astype(str)
@@ -603,7 +609,7 @@ def make_bus_routes_shapefiles(path, folder):
                 "route_long",
                 "color",
             ],
-            crs=from_epsg(4269),
+            crs=CRS.from_epsg(4269),
         )
 
         local_route_gdf = gpd.GeoDataFrame(
@@ -617,14 +623,14 @@ def make_bus_routes_shapefiles(path, folder):
                 "route_long",
                 "color",
             ],
-            crs=from_epsg(4269),
+            crs=CRS.from_epsg(4269),
         )
 
         local_route_gdf = local_route_gdf.to_crs(
-            from_epsg(2263)
+            CRS.from_epsg(2263)
         )  # reproject to NY State Plane (ft)
         express_route_gdf = express_route_gdf.to_crs(
-            from_epsg(2263)
+            CRS.from_epsg(2263)
         )  # reproject to NY State Plane (ft)
 
         # save GeoDataframes to shapefiles
@@ -688,7 +694,7 @@ def make_subway_entrances_shapefiles(path, folder):
             os.path.join(path, "counties_bndry.geojson"), driver="GeoJSON"
         )
         counties = counties.to_crs(
-            from_epsg(2263)
+            CRS.from_epsg(2263)
         )  # reproject counties to NY State Plane
 
         # give shorter names to columns
@@ -730,12 +736,12 @@ def make_subway_entrances_shapefiles(path, folder):
         entrances.update(entrances.loc[entrances["lon"] > 0, "lon"].mul(-1))
         entrances_shapes = create_point_shapes(entrances, x="lon", y="lat")
         entrances_shapes = entrances_shapes.to_crs(
-            from_epsg(2263)
+            CRS.from_epsg(2263)
         )  # reproject to NY State Plane (ft)
         entrances_shapes = gpd.sjoin(
-            entrances_shapes, counties, how="inner", op="intersects"
+            entrances_shapes, counties, how="inner", predicate="intersects"
         ).drop(
-            "index_right", 1
+            "index_right", axis=1
         )  # spatially join entraces to counties layer
         # change data type of the ADA and free_cross columns -- boolean fields can't be written into shapefile
         entrances_shapes["ada"] = entrances_shapes["ada"].astype(str)
