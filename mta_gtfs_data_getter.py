@@ -3,7 +3,7 @@
 Created on Tue May 23 09:09:26 2017
 
 @author: Anastasia Clark
-last updated on : July 8, 2018
+last updated on : june 3, 2024
 
 """
 
@@ -22,6 +22,11 @@ formatter = logging.Formatter("%(asctime)s - %(name)s - %(message)s", datefmt='%
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
+# proxies_dic={} # put your proxies here if needed and uncomment below
+
+# proxy_support = urllib.request.ProxyHandler(proxies_dic)
+# opener = urllib.request.build_opener(proxy_support)
+# urllib.request.install_opener(opener)
 
 def download_gtfs_data(new_folder_name):
     """Downloads GTFS data feeds and places them into corresponding folders. The dates of the MTA
@@ -49,7 +54,7 @@ def download_gtfs_data(new_folder_name):
         ]
 
         folders_match = {
-            "Bus Company": "bus_company",
+            "MTA Bus Company": "bus_company",
             "Long Island Rail Road": "LIRR",
             "Metro-North Railroad": "metro_north",
             "Bronx": "bx_bus",
@@ -57,15 +62,17 @@ def download_gtfs_data(new_folder_name):
             "Manhattan": "mn_bus",
             "Queens": "qn_bus",
             "Staten Island": "si_bus",
-            "New York City Transit Subway": "nyc_subway",
+            "Regular GTFS": "nyc_subway",
         }
 
         for folder in folders_to_create:
             if not os.path.exists(os.path.join(server_path, new_folder_name, folder)):
                 os.makedirs(os.path.join(server_path, new_folder_name, folder))
 
-        url = "http://web.mta.info/developers/developer-data-terms.html#data"
-        r = requests.get(url)
+        url = "https://new.mta.info/developers"
+        r = requests.get(url, 
+                         # proxies=proxies_dic
+                        )
         data = r.text
         soup = BeautifulSoup(data, features="lxml")
 
@@ -85,7 +92,7 @@ def download_gtfs_data(new_folder_name):
             for k in all_links.keys()
             if k
             and ".zip" in k
-            and k.startswith("data")
+            # and k.startswith("data")
             and "Shapefiles" not in k
             and "Historical" not in k
         ]
@@ -101,18 +108,19 @@ def download_gtfs_data(new_folder_name):
         print("Downloading the data.............")
         # download and unzip the data into its appropriate folders
         for k, v in gtfs_d.items():
-            name = "{}.zip".format(folders_match[v])
-            urllib.request.urlretrieve(
-                f"{base_path}/{k}",
-                os.path.join(server_path, new_folder_name, folders_match[v], name),
-            )
-            zip_ref = zipfile.ZipFile(
-                os.path.join(server_path, new_folder_name, folders_match[v], name), "r"
-            )
-            zip_ref.extractall(
-                os.path.join(server_path, new_folder_name, folders_match[v])
-            )
-            zip_ref.close()
+            if v in folders_match:
+                name = "{}.zip".format(folders_match[v])
+                urllib.request.urlretrieve(
+                    f"{k}",
+                    os.path.join(server_path, new_folder_name, folders_match[v], name),
+                )
+                zip_ref = zipfile.ZipFile(
+                    os.path.join(server_path, new_folder_name, folders_match[v], name), "r"
+                )
+                zip_ref.extractall(
+                    os.path.join(server_path, new_folder_name, folders_match[v])
+                )
+                zip_ref.close()
 
         # write out the dates of the latest update by MTA for each data downloaded
         with open(os.path.join(server_path, new_folder_name, "updates.txt"), "w") as t:
